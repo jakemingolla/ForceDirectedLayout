@@ -3,24 +3,31 @@ import java.util.ArrayList;
 
 public abstract class Node {
 
-        private Float x;
-        private Float y;
-        private Float z;
+        protected Float x;
+        protected Float y;
+        protected Float z;
 
-        private Float w;
-        private Float h;
-        private Float l;
+        protected Float w;
+        protected Float h;
+        protected Float l;
 
-        private Float r;
-        private Float b;
-        private Float g;
-        private Float a;
+        protected Float r;
+        protected Float b;
+        protected Float g;
+        protected Float a;
 
         List<Force> forces;
 
         Node(Float x, Float y, Float z,
              Float w, Float h, Float l,
              Float r, Float g, Float b, Float a) {
+                System.out.println("Creating node at (" + x + ", " + y +
+                                   ", " + z + ") with dimensions " + w +
+                                   " x " + h + " x " + l + " and color (" +
+                                   r + ", " + g + ", " + b + ", " + a +
+                                   ").");
+                                   
+
                 this.x = x;
                 this.y = y;
                 this.z = z;
@@ -51,7 +58,7 @@ public abstract class Node {
                 this.r = r;
                 this.g = g;
                 this.b = b;
-                this.a = 0f;
+                this.a = 255f;
 
                 this.forces = new ArrayList<Force>();
         }

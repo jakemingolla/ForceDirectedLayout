@@ -13,6 +13,19 @@ public class BoundingBox extends Node {
                       Constants.BOUNDING_BOX_DEFAULT_A);
         }
 
-
+        public void render() {
+              System.out.println("Rendering node at (" + x + ", " + y +
+                                   ", " + z + ") with dimensions " + w +
+                                   " x " + h + " x " + l + " and color (" +
+                                   r + ", " + g + ", " + b + ", " + a +
+                                   ").");
+ 
+                pushMatrix();
+                        translate(x, y, z);
+                        stroke(r, g, b, a);
+                        noFill();
+                        box(w, h, l);
+                popMatrix();
+        }
 
 }
