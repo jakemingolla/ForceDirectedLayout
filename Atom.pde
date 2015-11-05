@@ -3,7 +3,7 @@ public class Atom extends Node implements Renderable {
         private Double radius;
 
         Atom(Double x, Double y, Double z) {
-                super(Constants.DEFAULT_WEIGHT_SENTINEL,
+                super(100.0d,
                       x,
                       y,
                       z,

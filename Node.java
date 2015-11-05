@@ -82,16 +82,16 @@ public abstract class Node implements Updateable {
 
                 if (magnitude > Utilities.EPSILON) {
                         Force friction = new Force()
-                                                .withX((-1f * vX) / magnitude)
-                                                .withY((-1f * vY) / magnitude)
-                                                .withZ((-1f * vZ) / magnitude)
+                                                .withX((-1.0d * vX) / magnitude)
+                                                .withY((-1.0d * vY) / magnitude)
+                                                .withZ((-1.0d * vZ) / magnitude)
                                                 .withMagnitude(magnitude * Constants.DEFAULT_FRICTION_FACTOR);
                         addForce(friction);
                 }
 
-                Double xTotal = 0.0;
-                Double yTotal = 0.0;
-                Double zTotal = 0.0;
+                Double xTotal = 0.0d;
+                Double yTotal = 0.0d;
+                Double zTotal = 0.0d;
 
                 for (Force f : forces) {
                         magnitude = f.getMagnitude();
@@ -100,9 +100,9 @@ public abstract class Node implements Updateable {
                         zTotal += f.getZ() * magnitude;
                 }
 
-                Double xAcceleration = (xTotal * weight);
-                Double yAcceleration = (yTotal * weight);
-                Double zAcceleration = (zTotal * weight);
+                Double xAcceleration = (xTotal / weight);
+                Double yAcceleration = (yTotal / weight);
+                Double zAcceleration = (zTotal / weight);
 
                 vX += xAcceleration;
                 vY += yAcceleration;
@@ -116,6 +116,7 @@ public abstract class Node implements Updateable {
         }
 
         public void addForce(Force f) {
+                System.out.println("Creating new force with x=" + f.getX() + " y=" + f.getY() + " z=" + f.getZ() + " m=" + f.getMagnitude());
                 forces.add(f);
         }
 

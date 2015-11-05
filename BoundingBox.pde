@@ -1,7 +1,7 @@
 public class BoundingBox extends Node implements Renderable {
 
         BoundingBox() {
-                super(Constants.DEFAULT_WEIGHT_SENTINEL,
+                super(100.0d,
                       Constants.DEFAULT_BOUNDING_BOX_X,
                       Constants.DEFAULT_BOUNDING_BOX_Y,
                       Constants.DEFAULT_BOUNDING_BOX_Z,
@@ -15,7 +15,6 @@ public class BoundingBox extends Node implements Renderable {
         }
 
         public void render() {
-                println("Rendering bouding box " + x + " " + y + " " + z + " " + w + " " + h + " " + l);
                 pushMatrix();
                         translate(x.floatValue(), y.floatValue(), z.floatValue());
                         stroke(r.floatValue(), g.floatValue(), b.floatValue(), a.floatValue());

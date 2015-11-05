@@ -27,7 +27,17 @@ void setup() {
 
         edges.add(s);
 
-        forceDirectedGraph = new ForceDirectedGraph(nodes, edges);
+        List<NodeForceApplicator> nodeForceApplicatorList = new ArrayList<NodeForceApplicator>();
+        List<EdgeForceApplicator> edgeForceApplicatorList = new ArrayList<EdgeForceApplicator>();
+
+
+        CouloumbForceApplicator<Atom> cfa = new CouloumbForceApplicator<Atom>();
+        nodeForceApplicatorList.add(cfa);
+
+
+        forceDirectedGraph = new ForceDirectedGraph(nodes, edges,
+                                                    nodeForceApplicatorList,
+                                                    edgeForceApplicatorList);
 
         proxyMouseX = (double)(float(mouseX));
         proxyMouseY = (double)(float(mouseY));

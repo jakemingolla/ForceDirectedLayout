@@ -1,4 +1,4 @@
 public interface NodeForceApplicator<T extends Node> {
         
-        public void apply(T first, T second);
+        public void apply(T a, T b);
 }
