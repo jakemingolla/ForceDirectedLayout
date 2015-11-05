@@ -1,4 +1,4 @@
-public class Atom extends Node implements Updateable, Renderable {
+public class Atom extends Node implements Renderable {
 
         private Float radius;
 
@@ -24,8 +24,5 @@ public class Atom extends Node implements Updateable, Renderable {
                         fill(r, g, b, a);
                         sphere(radius);
                 popMatrix();
-        }
-
-        public void update() {
         }
 }

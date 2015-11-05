@@ -40,4 +40,6 @@ public class Constants {
         public static final Float DEFAULT_CAMERA_ROTATE_Y_MOUSE_FACTOR = 2f;
         public static final char DEFAULT_CAMERA_ROTATE_KEY = ' ';
 
+        public static final Float DEFAULT_FRICTION_FACTOR = 0.0f;
+
 }
