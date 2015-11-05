@@ -1,4 +1,4 @@
-public class BoundingBox extends Node {
+public class BoundingBox extends Node implements Renderable {
 
         BoundingBox() {
                 super(Constants.DEFAULT_BOUNDING_BOX_X,

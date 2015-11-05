@@ -20,6 +20,12 @@ public class Constants {
         public static final Float DEFAULT_ATOM_B = 0f;
         public static final Float DEFAULT_ATOM_A = 255f;
 
+        public static final Float DEFAULT_SPRING_R = 0f;
+        public static final Float DEFAULT_SPRING_G = 0f;
+        public static final Float DEFAULT_SPRING_B = 255f;
+        public static final Float DEFAULT_SPRING_A = 255f;
+        public static final Integer DEFAULT_SPRING_STROKE_WEIGHT = 3;
+
         public static final Integer DEFAULT_BACKGROUND = 100;
 
         public static final Float DEFAULT_CAMERA_Y_FACTOR = 0.5f;

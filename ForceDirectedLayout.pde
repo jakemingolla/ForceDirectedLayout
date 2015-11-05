@@ -7,14 +7,27 @@ import java.util.ArrayList;
 
 BoundingBox box;
 List<Node> nodes;
+List<Edge> edges;
 Float proxyMouseX;
 Float proxyMouseY;
 
 void setup() {
         size(800, 600, P3D);
-        box = new BoundingBox();
+
         nodes = new ArrayList<Node>();
-        nodes.add(new Atom(100f, 100f, 100f));
+        edges = new ArrayList<Edge>();
+
+        Atom a = new Atom(100f, 100f, 100f);
+        Atom b = new Atom(150f, 150f, 150f);
+        Spring<Atom> s = new Spring<Atom>(a, b);
+        box = new BoundingBox();
+
+        nodes.add(box);
+        nodes.add(a);
+        nodes.add(b);
+
+        edges.add(s);
+
         proxyMouseX = float(mouseX);
         proxyMouseY = float(mouseY);
 }
@@ -27,11 +40,24 @@ void draw() {
         handleCameraTranslations();
         handleCameraRotations();
 
-        box.render();
+        for (Node node : nodes) {
+                if (node instanceof Updateable) {
+                        ((Updateable)node).update();
+                }
+        }
 
         for (Node node : nodes) {
-                node.render();
+                if (node instanceof Renderable) {
+                        ((Renderable)node).render();
+                }
         }
+
+        for (Edge edge : edges) {
+                if (edge instanceof Renderable) {
+                        ((Renderable)edge).render();
+                }
+        }
+
 }
 
 void setupProxyMouse() {
@@ -60,7 +86,8 @@ void setupCamera() {
 
 void handleCameraTranslations() {
         translate(width * Constants.DEFAULT_CAMERA_EYE_X_FACTOR,
-                  height * Constants.DEFAULT_CAMERA_EYE_Y_FACTOR);
+                  height * Constants.DEFAULT_CAMERA_EYE_Y_FACTOR,
+                  0);
 }
 
 void handleCameraRotations() {
