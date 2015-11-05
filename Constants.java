@@ -1,29 +1,37 @@
 public class Constants {
 
-        public static final Float BOUNDING_BOX_DEFAULT_X = 0f;
-        public static final Float BOUNDING_BOX_DEFAULT_Y = 0f;
-        public static final Float BOUNDING_BOX_DEFAULT_Z = 0f;
+        public static final Float DEFAULT_BOUNDING_BOX_X = 0f;
+        public static final Float DEFAULT_BOUNDING_BOX_Y = 0f;
+        public static final Float DEFAULT_BOUNDING_BOX_Z = 0f;
 
-        public static final Float BOUNDING_BOX_DEFAULT_W = 100f;
-        public static final Float BOUNDING_BOX_DEFAULT_H = 100f;
-        public static final Float BOUNDING_BOX_DEFAULT_L = 100f;
+        public static final Float DEFAULT_BOUNDING_BOX_W = 300f;
+        public static final Float DEFAULT_BOUNDING_BOX_H = 300f;
+        public static final Float DEFAULT_BOUNDING_BOX_L = 300f;
 
-        public static final Float BOUNDING_BOX_DEFAULT_R = 255f;
-        public static final Float BOUNDING_BOX_DEFAULT_G = 255f;
-        public static final Float BOUNDING_BOX_DEFAULT_B = 255f;
-        public static final Float BOUNDING_BOX_DEFAULT_A = 255f;
+        public static final Float DEFAULT_BOUNDING_BOX_R = 255f;
+        public static final Float DEFAULT_BOUNDING_BOX_G = 255f;
+        public static final Float DEFAULT_BOUNDING_BOX_B = 255f;
+        public static final Float DEFAULT_BOUNDING_BOX_A = 255f;
 
-        public static final Float CAMERA_EYE_X = 500f;
-        public static final Float CAMERA_EYE_Y = 500f;
-        public static final Float CAMERA_EYE_Z = 500f;
+        public static final Float DEFAULT_ATOM_RADIUS = 10f;
 
-        public static final Float CAMERA_CENTER_X = 0f;
-        public static final Float CAMERA_CENTER_Y = 0f;
-        public static final Float CAMERA_CENTER_Z = 0f;
+        public static final Float DEFAULT_ATOM_R = 255f;
+        public static final Float DEFAULT_ATOM_G = 255f;
+        public static final Float DEFAULT_ATOM_B = 0f;
+        public static final Float DEFAULT_ATOM_A = 255f;
 
-        public static final Float CAMERA_UP_X = 0f;
-        public static final Float CAMERA_UP_Y = 1f;
-        public static final Float CAMERA_UP_Z = 0f;
+        public static final Integer DEFAULT_BACKGROUND = 100;
 
+        public static final Float DEFAULT_CAMERA_Y_FACTOR = 0.5f;
+        public static final Float DEFAULT_CAMERA_Z_FACTOR = 0.5f;
+        public static final Float DEFAULT_CAMERA_FIELD_OF_VIEW_FACTOR = 0.33333f;
+        public static final Float DEFAULT_CAMERA_RENDER_DISTANCE_FACTOR = 10f;
+        public static final Float DEFAULT_CAMERA_EYE_X_FACTOR = 0.5f;
+        public static final Float DEFAULT_CAMERA_EYE_Y_FACTOR = 0.5f;
+        public static final Float DEFAULT_CAMERA_ROTATE_X_BASE_FACTOR = -0.16666667f;
+        public static final Float DEFAULT_CAMERA_ROTATE_X_MOUSE_FACTOR = 2f;
+        public static final Float DEFAULT_CAMERA_ROTATE_Y_BASE_FACTOR = 0.16666667f;
+        public static final Float DEFAULT_CAMERA_ROTATE_Y_MOUSE_FACTOR = 2f;
+        public static final char DEFAULT_CAMERA_ROTATE_KEY = ' ';
 
 }
