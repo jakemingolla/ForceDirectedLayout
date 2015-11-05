@@ -6,16 +6,15 @@ import java.util.List;
 import java.util.ArrayList;
 
 BoundingBox box;
-List<Node> nodes;
-List<Edge> edges;
+ForceDirectedGraph forceDirectedGraph;
 Float proxyMouseX;
 Float proxyMouseY;
 
 void setup() {
         size(800, 600, P3D);
 
-        nodes = new ArrayList<Node>();
-        edges = new ArrayList<Edge>();
+        List<Node> nodes = new ArrayList<Node>();
+        List<Edge> edges = new ArrayList<Edge>();
 
         Atom a = new Atom(100f, 100f, 100f);
         Atom b = new Atom(150f, 150f, 150f);
@@ -27,6 +26,8 @@ void setup() {
         nodes.add(b);
 
         edges.add(s);
+
+        forceDirectedGraph = new ForceDirectedGraph(nodes, edges);
 
         proxyMouseX = float(mouseX);
         proxyMouseY = float(mouseY);
@@ -40,23 +41,8 @@ void draw() {
         handleCameraTranslations();
         handleCameraRotations();
 
-        for (Node node : nodes) {
-                if (node instanceof Updateable) {
-                        ((Updateable)node).update();
-                }
-        }
-
-        for (Node node : nodes) {
-                if (node instanceof Renderable) {
-                        ((Renderable)node).render();
-                }
-        }
-
-        for (Edge edge : edges) {
-                if (edge instanceof Renderable) {
-                        ((Renderable)edge).render();
-                }
-        }
+        forceDirectedGraph.update();
+        forceDirectedGraph.render();
 
 }
 
