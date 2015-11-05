@@ -1,9 +1,10 @@
 public class Atom extends Node implements Renderable {
 
-        private Float radius;
+        private Double radius;
 
-        Atom(Float x, Float y, Float z) {
-                super(x,
+        Atom(Double x, Double y, Double z) {
+                super(Constants.DEFAULT_WEIGHT_SENTINEL,
+                      x,
                       y,
                       z,
                       Constants.DEFAULT_ATOM_RADIUS,
@@ -19,10 +20,10 @@ public class Atom extends Node implements Renderable {
 
         public void render() {
                 pushMatrix();
-                        translate(x, y, z);
+                        translate(x.floatValue(), y.floatValue(), z.floatValue());
                         noStroke();
-                        fill(r, g, b, a);
-                        sphere(radius);
+                        fill(r.floatValue(), g.floatValue(), b.floatValue(), a.floatValue());
+                        sphere(radius.floatValue());
                 popMatrix();
         }
 }

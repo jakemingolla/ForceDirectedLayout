@@ -7,8 +7,8 @@ import java.util.ArrayList;
 
 BoundingBox box;
 ForceDirectedGraph forceDirectedGraph;
-Float proxyMouseX;
-Float proxyMouseY;
+Double proxyMouseX;
+Double proxyMouseY;
 
 void setup() {
         size(800, 600, P3D);
@@ -16,8 +16,8 @@ void setup() {
         List<Node> nodes = new ArrayList<Node>();
         List<Edge> edges = new ArrayList<Edge>();
 
-        Atom a = new Atom(100f, 100f, 100f);
-        Atom b = new Atom(150f, 150f, 150f);
+        Atom a = new Atom(100.0d, 100.0d, 100.0d);
+        Atom b = new Atom(150.0d, 150.0d, 150.0d);
         Spring<Atom> s = new Spring<Atom>(a, b);
         box = new BoundingBox();
 
@@ -29,8 +29,8 @@ void setup() {
 
         forceDirectedGraph = new ForceDirectedGraph(nodes, edges);
 
-        proxyMouseX = float(mouseX);
-        proxyMouseY = float(mouseY);
+        proxyMouseX = (double)(float(mouseX));
+        proxyMouseY = (double)(float(mouseY));
 }
 
 void draw() {
@@ -47,40 +47,38 @@ void draw() {
 }
 
 void setupProxyMouse() {
-        Float mouseXf = float(mouseX);
-        Float mouseYf = float(mouseY);
+        Double mouseXd = (double)float(mouseX);
+        Double mouseYd = (double)float(mouseY);
         if (keyPressed && key == Constants.DEFAULT_CAMERA_ROTATE_KEY) {
-                Float deltaX = mouseXf- proxyMouseX;
-                Float deltaY = mouseYf - proxyMouseY;
-                println("proxyMouseX = " + proxyMouseX);
-                println("delta X = " + deltaX);
+                Double deltaX = mouseXd- proxyMouseX;
+                Double deltaY = mouseYd - proxyMouseY;
                 proxyMouseX += deltaX * 0.01;
                 proxyMouseY += deltaY * 0.01;
         }
 }
 
 void setupCamera() {
-        float cameraY = height * Constants.DEFAULT_CAMERA_Y_FACTOR;
-        float fieldOfView = PI * Constants.DEFAULT_CAMERA_FIELD_OF_VIEW_FACTOR;
-        float cameraZ = cameraY / tan(fieldOfView * Constants.DEFAULT_CAMERA_Z_FACTOR);
+        float cameraY = (height * Constants.DEFAULT_CAMERA_Y_FACTOR.floatValue());
+        float fieldOfView = (PI * Constants.DEFAULT_CAMERA_FIELD_OF_VIEW_FACTOR.floatValue());
+        float cameraZ = cameraY / tan(fieldOfView * Constants.DEFAULT_CAMERA_Z_FACTOR.floatValue());
         float aspectRatio = float(width) / float(height);
         
         perspective(fieldOfView, aspectRatio,
-                    cameraZ / Constants.DEFAULT_CAMERA_RENDER_DISTANCE_FACTOR,
-                    cameraZ * Constants.DEFAULT_CAMERA_RENDER_DISTANCE_FACTOR);
+                    cameraZ / Constants.DEFAULT_CAMERA_RENDER_DISTANCE_FACTOR.floatValue(),
+                    cameraZ * Constants.DEFAULT_CAMERA_RENDER_DISTANCE_FACTOR.floatValue());
 }
 
 void handleCameraTranslations() {
-        translate(width * Constants.DEFAULT_CAMERA_EYE_X_FACTOR,
-                  height * Constants.DEFAULT_CAMERA_EYE_Y_FACTOR,
+        translate(width * Constants.DEFAULT_CAMERA_EYE_X_FACTOR.floatValue(),
+                  height * Constants.DEFAULT_CAMERA_EYE_Y_FACTOR.floatValue(),
                   0);
 }
 
 void handleCameraRotations() {
-        rotateX(PI * Constants.DEFAULT_CAMERA_ROTATE_X_BASE_FACTOR +
-                -1 * proxyMouseY / float(width) * PI * Constants.DEFAULT_CAMERA_ROTATE_X_MOUSE_FACTOR);
+        rotateX(PI * Constants.DEFAULT_CAMERA_ROTATE_X_BASE_FACTOR.floatValue() +
+                -1 * proxyMouseY.floatValue() / float(width) * PI * Constants.DEFAULT_CAMERA_ROTATE_X_MOUSE_FACTOR.floatValue());
 
-        rotateY(PI * Constants.DEFAULT_CAMERA_ROTATE_Y_BASE_FACTOR +
-                -1 * proxyMouseX / float(height) * PI * Constants.DEFAULT_CAMERA_ROTATE_Y_MOUSE_FACTOR);
+        rotateY(PI * Constants.DEFAULT_CAMERA_ROTATE_Y_BASE_FACTOR.floatValue() +
+                -1 * proxyMouseX.floatValue() / float(height) * PI * Constants.DEFAULT_CAMERA_ROTATE_Y_MOUSE_FACTOR.floatValue());
 }
                            

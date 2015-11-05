@@ -1,16 +1,16 @@
 public class Force {
 
-        private Float x, y, z;
-        private Float magnitude;
+        private Double x, y, z;
+        private Double magnitude;
 
         Force() {
-                this.x = 0f;
-                this.y = 0f;
-                this.z = 0f;
-                this.magnitude = 0f;
+                this.x = 0.0;
+                this.y = 0.0;
+                this.z = 0.0;
+                this.magnitude = 0.0;
         }
 
-        Force(Float x, Float y, Float z, Float magnitude) {
+        Force(Double x, Double y, Double z, Double magnitude) {
                 this.x = x;
                 this.y = y;
                 this.z = z;
@@ -18,23 +18,23 @@ public class Force {
         }
 
 
-        public Float getX() {
+        public Double getX() {
                 return x;
         }
 
-        public Float getY() {
+        public Double getY() {
                 return y;
         }
 
-        public Float getZ() {
+        public Double getZ() {
                 return z;
         }
 
-        public Float getMagnitude() {
+        public Double getMagnitude() {
                 return magnitude;
         }
 
-        public void setX(Float x) {
+        public void setX(Double x) {
                 if (!Utilities.inUnit(x)) {
                         throw new IllegalArgumentException();
                 } else {
@@ -42,7 +42,7 @@ public class Force {
                 }
         }
 
-        public void setY(Float y) {
+        public void setY(Double y) {
                 if (!Utilities.inUnit(y)) {
                         throw new IllegalArgumentException();
                 } else {
@@ -50,7 +50,7 @@ public class Force {
                 }
         }
 
-        public void setZ(Float z) {
+        public void setZ(Double z) {
                 if (!Utilities.inUnit(z)) {
                         throw new IllegalArgumentException();
                 } else {
@@ -58,26 +58,26 @@ public class Force {
                 }
         }
 
-        public void setMagnitude(Float magnitude) {
+        public void setMagnitude(Double magnitude) {
                 this.magnitude = magnitude;
         }
 
-        public Force withX(Float x) {
+        public Force withX(Double x) {
                 this.setX(x);
                 return this;
         }
 
-        public Force withY(Float y) {
+        public Force withY(Double y) {
                 this.setY(y);
                 return this;
         }
 
-        public Force withZ(Float z) {
+        public Force withZ(Double z) {
                 this.setZ(z);
                 return this;
         }
 
-        public Force withMagnitude(Float magnitude) {
+        public Force withMagnitude(Double magnitude) {
                 this.setMagnitude(magnitude);
                 return this;
         }

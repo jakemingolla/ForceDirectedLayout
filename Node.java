@@ -1,33 +1,34 @@
 import java.util.List;
 import java.util.ArrayList;
+import static java.lang.Math.sqrt;
 
 public abstract class Node implements Updateable {
 
-        protected Float x;
-        protected Float y;
-        protected Float z;
+        protected Double x;
+        protected Double y;
+        protected Double z;
 
-        protected Float w;
-        protected Float h;
-        protected Float l;
+        protected Double w;
+        protected Double h;
+        protected Double l;
 
-        protected Float r;
-        protected Float b;
-        protected Float g;
-        protected Float a;
+        protected Double r;
+        protected Double b;
+        protected Double g;
+        protected Double a;
 
-        protected Float vX;
-        protected Float vY;
-        protected Float vZ;
+        protected Double vX;
+        protected Double vY;
+        protected Double vZ;
 
-        protected Float weight;
+        protected Double weight;
 
         List<Force> forces;
 
-        Node(Float weight,
-             Float x, Float y, Float z,
-             Float w, Float h, Float l,
-             Float r, Float g, Float b, Float a) {
+        Node(Double weight,
+             Double x, Double y, Double z,
+             Double w, Double h, Double l,
+             Double r, Double g, Double b, Double a) {
                 this.weight = weight;
 
                 this.x = x;
@@ -45,15 +46,15 @@ public abstract class Node implements Updateable {
 
                 this.forces = new ArrayList<Force>();
 
-                this.vX = 0f;
-                this.vY = 0f;
-                this.vZ = 0f;
+                this.vX = 0.0;
+                this.vY = 0.0;
+                this.vZ = 0.0;
         }
 
-        Node(Float weight,
-             Float x, Float y, Float z,
-             Float w, Float h, Float l,
-             Float r, Float g, Float b) {
+        Node(Double weight,
+             Double x, Double y, Double z,
+             Double w, Double h, Double l,
+             Double r, Double g, Double b) {
                 this.weight = weight;
 
                 this.x = x;
@@ -67,30 +68,30 @@ public abstract class Node implements Updateable {
                 this.r = r;
                 this.g = g;
                 this.b = b;
-                this.a = 255f;
+                this.a = 255.0;
 
                 this.forces = new ArrayList<Force>();
 
-                this.vX = 0f;
-                this.vY = 0f;
-                this.vZ = 0f;
+                this.vX = 0.0;
+                this.vY = 0.0;
+                this.vZ = 0.0;
         }
 
         public void update() {
-                Float magnitude = sqrt((vX * vX) + (vY * vY) + (vZ * vZ));
+                Double magnitude = sqrt((vX * vX) + (vY * vY) + (vZ * vZ));
 
                 if (magnitude > Utilities.EPSILON) {
-                        Force friction = new Force();
-                        friction.x = (-1f * vx) / magnitude;
-                        friction.y = (-1f * vy) / magnitude;
-                        friction.z = (-1f * vz) / magnitude;
-                        friction.magnitude = magnitude * Constants.DEFAULT_FRICTION_FACTOR;
+                        Force friction = new Force()
+                                                .withX((-1f * vX) / magnitude)
+                                                .withY((-1f * vY) / magnitude)
+                                                .withZ((-1f * vZ) / magnitude)
+                                                .withMagnitude(magnitude * Constants.DEFAULT_FRICTION_FACTOR);
                         addForce(friction);
                 }
 
-                Float xTotal = 0f;
-                Float yTotal = 0f;
-                Float zTotal = 0f;
+                Double xTotal = 0.0;
+                Double yTotal = 0.0;
+                Double zTotal = 0.0;
 
                 for (Force f : forces) {
                         magnitude = f.getMagnitude();
@@ -99,9 +100,9 @@ public abstract class Node implements Updateable {
                         zTotal += f.getZ() * magnitude;
                 }
 
-                Float xAcceleration = (xTotal * weight);
-                Float yAcceleration = (yTotal * weight);
-                Float zAcceleration = (zTotal * weight);
+                Double xAcceleration = (xTotal * weight);
+                Double yAcceleration = (yTotal * weight);
+                Double zAcceleration = (zTotal * weight);
 
                 vX += xAcceleration;
                 vY += yAcceleration;
@@ -120,90 +121,91 @@ public abstract class Node implements Updateable {
 
         public void clearForces() {
                 forces.clear();
+        } 
 
-        public void setWeight(Float weight) {
+        public void setWeight(Double weight) {
                 this.weight = weight;
         }
-        public void setX(Float x) {
+        public void setX(Double x) {
                 this.x = x;
         }
-        public void setY(Float y) {
+        public void setY(Double y) {
                 this.y = y;
         }
-        public void setZ(Float z) {
+        public void setZ(Double z) {
                 this.z = z;
         }
-        public void setW(Float w) {
+        public void setW(Double w) {
                 this.w = w;
         }
-        public void setH(Float l) {
+        public void setH(Double l) {
                 this.h = h;
         }
-        public void setL(Float l) {
+        public void setL(Double l) {
                 this.l = l;
         }
-        public void setR(Float r) {
+        public void setR(Double r) {
                 this.r = r;
         }
-        public void setG(Float g) {
+        public void setG(Double g) {
                 this.g = g;
         }
-        public void setB(Float b) {
+        public void setB(Double b) {
                 this.b = b;
         }
-        public void setA(Float a) {
+        public void setA(Double a) {
                 this.a = a;
         }
-        public void setVX(Float vX) {
+        public void setVX(Double vX) {
                 this.vX = vX;
         }
-        public void setVY(Float vY) {
+        public void setVY(Double vY) {
                 this.vY = vY;
         }
-        public void setVZ(Float vZ) {
+        public void setVZ(Double vZ) {
                 this.vZ = vZ;
         }
 
-        public Float getWeight() {
+        public Double getWeight() {
                 return weight;
         }
-        public Float getX() {
+        public Double getX() {
                 return x;
         }
-        public Float getY() {
+        public Double getY() {
                 return y;
         }
-        public Float getZ() {
+        public Double getZ() {
                 return z;
         }
-        public Float getW() {
+        public Double getW() {
                 return w;
         }
-        public Float getH() {
+        public Double getH() {
                 return h;
         }
-        public Float getL() {
+        public Double getL() {
                 return l;
         }
-        public Float getR() {
+        public Double getR() {
                 return r;
         }
-        public Float getG() {
+        public Double getG() {
                 return g;
         }
-        public Float getB() {
+        public Double getB() {
                 return b;
         }
-        public Float getA() {
+        public Double getA() {
                 return a;
         }
-        public Float getVX() {
+        public Double getVX() {
                 return vX;
         }
-        public Float getVX() {
+        public Double getVY() {
                 return vY;
         }
-        public Float getVZ() {
+        public Double getVZ() {
                 return vZ;
         }
 }
