@@ -1,17 +1,10 @@
-public abstract class SecondOrderApplicator<T> {
+public abstract class SecondOrderApplicator<T> extends Applicator<T> {
 
-        Class c;
-
-        SecondOrderApplicator(Class typeOf) {
-                c = typeOf;
+        SecondOrderApplicator(Class c) {
+                super(c, 2);
         }
-
-        public Class getAppliedClass() {
-                return c;
-        }
-
 
         protected void apply(T a, T b) {
-                throw new NullPointerException();
+                super.apply(a, b);
         }
 }

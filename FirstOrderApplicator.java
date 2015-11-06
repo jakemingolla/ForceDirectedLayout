@@ -1,4 +1,11 @@
-public interface FirstOrderApplicator<T> {
+public abstract class FirstOrderApplicator<T> extends Applicator<T> {
 
-        public void apply(T a);
+        FirstOrderApplicator(Class c) {
+                super(c, 1);
+        }
+
+        protected void apply(T a) {
+                super.apply(a);
+        }
+
 }

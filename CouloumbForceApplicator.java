@@ -5,6 +5,7 @@ public class CouloumbForceApplicator<Atom extends Node> extends SecondOrderAppli
         }
 
         public void apply(Atom a, Atom b) {
+                super.apply(a, b);
                 Force f = new Force().withX(-1.0).withMagnitude(10.0);
                 a.addForce(f);
         }
