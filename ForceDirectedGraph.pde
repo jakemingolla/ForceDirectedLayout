@@ -2,34 +2,41 @@ import java.util.List;
 
 public class ForceDirectedGraph<Atom, Spring> extends Graph {
 
-        List<FirstOrderApplicator> firstOrderApplicatorList;
-        List<SecondOrderApplicator> secondOrderApplicatorList;
-
+        List<Applicator> applicatorList;
         ForceDirectedGraph(List<Atom> vertexList, List<Spring> edgeList,
-                           List<FirstOrderApplicator> firstOrderApplicatorList,
-                           List<SecondOrderApplicator> secondOrderApplicatorList) {
+                           List<Applicator> applicatorList) {
                 super(vertexList, edgeList);
-                this.firstOrderApplicatorList = firstOrderApplicatorList;
-                this.secondOrderApplicatorList = secondOrderApplicatorList;
+                this.applicatorList = applicatorList;
         }
 
         public void update() {
                 Integer nodeListLength = vertexList.size();
                 Integer edgeListLength = edgeList.size();
 
-                for (SecondOrderApplicator soa : secondOrderApplicatorList) {
-                        if (soa.getAppliedClass().getSuperclass().equals(Node.class)) {
+                for (Applicator app : applicatorList) {
+                        Class c = app.getAppliedClass();
+                        if (app.getAppliedClass().getSuperclass().equals(Node.class)) {
                                 for (int i = 0; i < nodeListLength; i++) {
-                                        for (int j = 0; j < nodeListLength; j++) {
-                                                if (i != j) {
-                                                        Node a = (Node)vertexList.get(i);
-                                                        Node b = (Node)vertexList.get(j);
-                                                        Class c = soa.getAppliedClass();
-                                                        if (soa.getAppliedClass().equals(a.getClass()) &&
-                                                            soa.getAppliedClass().equals(b.getClass())) {
-                                                                soa.apply(a, b);
+                                        Node a = (Node)vertexList.get(i);
+                                        if (app instanceof SecondOrderApplicator) {
+                                                for (int j = 0; j < nodeListLength; j++) {
+                                                        if (i != j) {
+                                                                Node b = (Node)vertexList.get(j);
+                                                                /*
+                                                                println("a = " + a.getClass());
+                                                                println("b = " + b.getClass());
+                                                                println("c = " + c);
+                                                                */
+                                                                if (c.equals(a.getClass()) &&
+                                                                    c.equals(b.getClass())) {
+                                                                        app.apply(a, b);
+                                                                        println("EQUAL");
+                                                                } 
                                                         }
-                                                        
+                                                }
+                                        } else {
+                                                if (c.equals(a.getClass())) {
+                                                        app.apply(a);
                                                 }
                                         }
                                 }
