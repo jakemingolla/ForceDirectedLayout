@@ -4,7 +4,7 @@ public abstract class SecondOrderApplicator<T> extends Applicator<T> {
                 super(c, 2);
         }
 
-        protected void apply(T a, T b) {
-                super.apply(a, b);
+        protected void apply(T... args) {
+                super.apply(args);
         }
 }

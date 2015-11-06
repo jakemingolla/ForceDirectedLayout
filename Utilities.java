@@ -17,6 +17,14 @@ public class Utilities {
                 return abs(a - b) < EPSILON;
         }
 
+        public static Double bound(Double val) {
+                if (inRange(val, EPSILON)) {
+                        return EPSILON;
+                } else {
+                        return val;
+                }
+        }
+
         public static Boolean inUnit(Double a) {
                 Double val = abs(a);
                 return (val < UNIT) || (inRange(val, UNIT));

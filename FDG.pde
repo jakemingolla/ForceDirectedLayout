@@ -17,7 +17,7 @@ void setup() {
         List<Edge> edges = new ArrayList<Edge>();
 
         Atom a = new Atom(100.0d, 100.0d, 100.0d);
-        Atom b = new Atom(150.0d, 150.0d, 150.0d);
+        Atom b = new Atom(150.0d, 100.0d, 100.0d);
         Spring<Atom> s = new Spring<Atom>(a, b);
         box = new BoundingBox();
 
@@ -46,9 +46,22 @@ void draw() {
         handleCameraTranslations();
         handleCameraRotations();
 
+        handleAxes();
         forceDirectedGraph.update();
         forceDirectedGraph.render();
+        println(forceDirectedGraph.getKineticEnergy());
 
+}
+
+void handleAxes() {
+        pushStyle();
+                stroke(255, 0, 0);
+                line(0, 0, 0, 150, 0, 0);
+                stroke(0, 255, 0);
+                line(0, 0, 0, 0, 150, 0);
+                stroke(0, 0, 255);
+                line(0, 0, 0, 0, 0, 150);
+        popStyle();
 }
 
 void setupProxyMouse() {

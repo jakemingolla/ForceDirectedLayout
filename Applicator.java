@@ -13,7 +13,6 @@ public abstract class Applicator<T> {
         }
 
         protected void apply(T... args) {
-                System.out.println("12");
                 assert(args.length == numArgs);
         }
 }

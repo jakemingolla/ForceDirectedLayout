@@ -115,14 +115,37 @@ public abstract class Node implements Updateable {
                 clearForces();
         }
 
+        public Double getKineticEnergy() {
+                return 0.5 * weight * Math.sqrt((vX * vX) + (vY * vY) + (vZ * vZ));
+        }
+
         public void addForce(Force f) {
-                System.out.println("Creating new force with x=" + f.getX() + " y=" + f.getY() + " z=" + f.getZ() + " m=" + f.getMagnitude());
+                //System.out.println("Creating new force with x=" + f.getX() + " y=" + f.getY() + " z=" + f.getZ() + " m=" + f.getMagnitude());
                 forces.add(f);
         }
 
         public void clearForces() {
                 forces.clear();
         } 
+
+        public Double getXDiff(Node target) {
+                return x - target.getX();
+        }
+
+        public Double getYDiff(Node target) {
+                return y - target.getY();
+        }
+
+        public Double getZDiff(Node target) {
+                return z - target.getZ();
+        }
+
+        public Double getDistance(Node target) {
+                Double xDiff = getXDiff(target);
+                Double yDiff = getYDiff(target);
+                Double zDiff = getZDiff(target);
+                return Math.sqrt((xDiff * xDiff) + (yDiff * yDiff) + (zDiff * zDiff));
+        }
 
         public void setWeight(Double weight) {
                 this.weight = weight;

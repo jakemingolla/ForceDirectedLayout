@@ -19,18 +19,12 @@ public class ForceDirectedGraph<Atom, Spring> extends Graph {
                                 for (int i = 0; i < nodeListLength; i++) {
                                         Node a = (Node)vertexList.get(i);
                                         if (app instanceof SecondOrderApplicator) {
-                                                for (int j = 0; j < nodeListLength; j++) {
+                                                for (int j = i + 1; j < nodeListLength; j++) {
                                                         if (i != j) {
                                                                 Node b = (Node)vertexList.get(j);
-                                                                /*
-                                                                println("a = " + a.getClass());
-                                                                println("b = " + b.getClass());
-                                                                println("c = " + c);
-                                                                */
                                                                 if (c.equals(a.getClass()) &&
                                                                     c.equals(b.getClass())) {
                                                                         app.apply(a, b);
-                                                                        println("EQUAL");
                                                                 } 
                                                         }
                                                 }
@@ -42,8 +36,17 @@ public class ForceDirectedGraph<Atom, Spring> extends Graph {
                                 }
                         }
                 }
-
                 super.update();
+        }
+
+        public Double getKineticEnergy() {
+                Double sum = 0.0d;
+                Integer nodeListLength = vertexList.size();
+                for (int i = 0; i < nodeListLength; i++) {
+                        Node node = (Node)vertexList.get(i);
+                        sum += node.getKineticEnergy();
+                }
+                return sum;
         }
 
 }
