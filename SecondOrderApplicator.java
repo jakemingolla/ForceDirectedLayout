@@ -1,7 +1,7 @@
 public abstract class SecondOrderApplicator<T> extends Applicator<T> {
 
-        SecondOrderApplicator(Class c) {
-                super(c, 2);
+        SecondOrderApplicator(Class c, Object[] closure) {
+                super(c, 2, closure);
         }
 
         protected void apply(T... args) {

@@ -1,11 +1,13 @@
 public abstract class Applicator<T> {
 
-        Class c;
-        Integer numArgs;
+        protected Class c;
+        protected Integer numArgs;
+        protected Object[] closure;
 
-        Applicator(Class c, Integer numArgs) {
+        Applicator(Class c, Integer numArgs, Object[] closure) {
                 this.c = c;
                 this.numArgs = numArgs;
+                this.closure = closure;
         }
 
         public Class getAppliedClass() {

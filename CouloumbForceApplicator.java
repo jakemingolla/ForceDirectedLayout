@@ -1,7 +1,7 @@
 public class CouloumbForceApplicator<Atom> extends SecondOrderApplicator<Atom> {
 
-        CouloumbForceApplicator(Class typeOf) {
-                super(typeOf);
+        CouloumbForceApplicator(Class c, Object[] closure) {
+                super(c, closure);
         }
 
         @Override
