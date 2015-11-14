@@ -14,29 +14,20 @@ public class ForceDirectedGraph<Atom, Spring> extends Graph {
                 Integer edgeListLength = edgeList.size();
 
                 for (Applicator app : applicatorList) {
-                        /*
-                        Class c = app.getAppliedClass();
-                        if (app.getAppliedClass().getSuperclass().equals(Node.class)) {
-                                for (int i = 0; i < nodeListLength; i++) {
-                                        Node a = (Node)vertexList.get(i);
-                                        if (app instanceof SecondOrderApplicator) {
-                                                for (int j = i + 1; j < nodeListLength; j++) {
-                                                        if (i != j) {
-                                                                Node b = (Node)vertexList.get(j);
-                                                                if (c.equals(a.getClass()) &&
-                                                                    c.equals(b.getClass())) {
-                                                                        app.apply(a, b);
-                                                                } 
+                        for (int i = 0; i < nodeListLength; i++) {
+                                Node a = (Node)vertexList.get(i);
+                                if (app instanceof SecondOrderApplicator) {
+                                        for (int j = i + 1; j < nodeListLength; j++) {
+                                                if (i != j) {
+                                                        Node b = (Node)vertexList.get(j);
+                                                        if (a.getClass().equals(app.getAppliedClassByIndex(0)) &&
+                                                            b.getClass().equals(app.getAppliedClassByIndex(1))) {
+                                                                app.apply(a, b);
                                                         }
-                                                }
-                                        } else {
-                                                if (c.equals(a.getClass())) {
-                                                        app.apply(a);
                                                 }
                                         }
                                 }
                         }
-                        */
                 }
                 super.update();
         }
