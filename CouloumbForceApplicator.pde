@@ -1,15 +1,15 @@
-public class CouloumbForceApplicator<Atom> extends SecondOrderApplicator<Atom> {
+public class CouloumbForceApplicator extends SecondOrderApplicator {
 
-        CouloumbForceApplicator(Class c, Object[] closure) {
-                super(c, closure);
+        CouloumbForceApplicator() {
+                super(Atom.class, Atom.class);
         }
 
         @Override
-        public void apply(Atom... args) {
+        public void apply(Object... args) {
                 super.apply(args);
 
-                Atom a = args[0];
-                Atom b = args[1];
+                Atom a = (Atom)args[0];
+                Atom b = (Atom)args[1];
 
                 Double distance = Utilities.bound(((Node)a).getDistance((Node)b));
 

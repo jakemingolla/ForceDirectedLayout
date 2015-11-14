@@ -1,20 +1,37 @@
-public abstract class Applicator<T> {
+public abstract class Applicator {
 
-        protected Class c;
+        protected Class[] classes;
         protected Integer numArgs;
         protected Object[] closure;
 
-        Applicator(Class c, Integer numArgs, Object[] closure) {
-                this.c = c;
+        Applicator(Integer numArgs, Class... classes) {
+                System.out.println("Num args = " + numArgs);
+                System.out.println("Classes len = " + classes.length);
+                assert(classes.length == numArgs);
                 this.numArgs = numArgs;
+                this.classes = classes;
+        }
+
+        public Applicator withClosure(Object... closure) {
                 this.closure = closure;
+                return this;
         }
 
-        public Class getAppliedClass() {
-                return c;
+        public Class[] getAppliedClasses() {
+                return classes;
         }
 
-        protected void apply(T... args) {
+        public Class getAppliedClassByIndex(Integer i) {
+                assert(i < classes.length);
+                return classes[i];
+        }
+
+        protected void apply(Object... args) {
                 assert(args.length == numArgs);
+                int length = args.length;
+                for (int i = 0; i < length; i++) {
+                        Class c = args[i].getClass();
+                        assert(c.equals(getAppliedClassByIndex(i)));
+                }
         }
 }

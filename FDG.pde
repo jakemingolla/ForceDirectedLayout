@@ -28,7 +28,7 @@ void setup() {
         edges.add(s);
 
         List<Applicator> applicatorList = new ArrayList<Applicator>();
-        CouloumbForceApplicator<Atom> cfa = new CouloumbForceApplicator<Atom>(Atom.class, null);
+        CouloumbForceApplicator cfa = new CouloumbForceApplicator();
         applicatorList.add(cfa);
 
         forceDirectedGraph = new ForceDirectedGraph(nodes, edges,
@@ -49,8 +49,6 @@ void draw() {
         handleAxes();
         forceDirectedGraph.update();
         forceDirectedGraph.render();
-        println(forceDirectedGraph.getKineticEnergy());
-
 }
 
 void handleAxes() {

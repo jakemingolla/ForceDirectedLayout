@@ -14,6 +14,7 @@ public class ForceDirectedGraph<Atom, Spring> extends Graph {
                 Integer edgeListLength = edgeList.size();
 
                 for (Applicator app : applicatorList) {
+                        /*
                         Class c = app.getAppliedClass();
                         if (app.getAppliedClass().getSuperclass().equals(Node.class)) {
                                 for (int i = 0; i < nodeListLength; i++) {
@@ -35,6 +36,7 @@ public class ForceDirectedGraph<Atom, Spring> extends Graph {
                                         }
                                 }
                         }
+                        */
                 }
                 super.update();
         }
