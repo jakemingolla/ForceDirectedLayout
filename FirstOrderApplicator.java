@@ -1,11 +1,11 @@
-public abstract class FirstOrderApplicator<T> extends Applicator<T> {
+public abstract class FirstOrderApplicator extends Applicator {
 
-        FirstOrderApplicator(Class c) {
-                super(c, 1);
+        FirstOrderApplicator(Class... classes) {
+                super(1, classes);
         }
 
-        public void apply(T a) {
-                super.apply(a);
+        public void apply(Object... args) {
+                super.apply(args);
         }
 
 }

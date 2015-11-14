@@ -17,6 +17,16 @@ public class Utilities {
                 return abs(a - b) < EPSILON;
         }
 
+        public static Double getSign(Double a) {
+                if (inRange(a, 0.0)) {
+                        return 1.0d;
+                } else if (a > EPSILON) {
+                        return 1.0d;
+                } else {
+                        return -1.0d;
+                }
+        }
+
         public static Double bound(Double val) {
                 if (inRange(val, EPSILON)) {
                         return EPSILON;

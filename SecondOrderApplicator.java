@@ -1,10 +1,10 @@
-public abstract class SecondOrderApplicator<T> extends Applicator<T> {
+public abstract class SecondOrderApplicator extends Applicator {
 
-        SecondOrderApplicator(Class c) {
-                super(c, 2);
+        SecondOrderApplicator(Class... classes) {
+                super(2, classes);
         }
 
-        protected void apply(T... args) {
+        protected void apply(Object... args) {
                 super.apply(args);
         }
 }
