@@ -28,8 +28,12 @@ void setup() {
         edges.add(s);
 
         List<Applicator> applicatorList = new ArrayList<Applicator>();
+
         CouloumbForceApplicator cfa = new CouloumbForceApplicator();
         applicatorList.add(cfa);
+
+        BoundingForceApplicator bfa = new BoundingForceApplicator(box);
+        applicatorList.add(bfa);
 
         forceDirectedGraph = new ForceDirectedGraph(nodes, edges,
                                                     applicatorList);

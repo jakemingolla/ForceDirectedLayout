@@ -2,7 +2,6 @@ public abstract class Applicator {
 
         protected Class[] classes;
         protected Integer numArgs;
-        protected Object[] closure;
 
         Applicator(Integer numArgs, Class... classes) {
                 System.out.println("Num args = " + numArgs);
@@ -10,11 +9,6 @@ public abstract class Applicator {
                 assert(classes.length == numArgs);
                 this.numArgs = numArgs;
                 this.classes = classes;
-        }
-
-        public Applicator withClosure(Object... closure) {
-                this.closure = closure;
-                return this;
         }
 
         public Class[] getAppliedClasses() {
