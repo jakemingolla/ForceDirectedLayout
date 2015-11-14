@@ -1,11 +1,19 @@
+/**
+ * @author jakemingolla
+ * Applicator abstract class to apply functions onto groups
+ * of objects. Given a number of arguments and classes for each
+ * argument, allows for application of a generalizable function
+ * across objects of the matching type.
+ * Most commonly used with Nodes and Force.
+ * {@link Node}
+ * {@link Force}
+ **/
 public abstract class Applicator {
 
         protected Class[] classes;
         protected Integer numArgs;
 
         Applicator(Integer numArgs, Class... classes) {
-                System.out.println("Num args = " + numArgs);
-                System.out.println("Classes len = " + classes.length);
                 assert(classes.length == numArgs);
                 this.numArgs = numArgs;
                 this.classes = classes;
