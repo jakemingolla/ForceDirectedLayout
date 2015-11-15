@@ -29,7 +29,7 @@ void setup() {
 
         List<Applicator> applicatorList = new ArrayList<Applicator>();
 
-        CouloumbForceApplicator cfa = new CouloumbForceApplicator();
+        CoulombForceApplicator cfa = new CoulombForceApplicator();
         applicatorList.add(cfa);
 
         BoundingForceApplicator bfa = new BoundingForceApplicator(box);

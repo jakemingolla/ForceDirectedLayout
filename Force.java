@@ -36,7 +36,6 @@ public class Force {
 
         public void setX(Double x) {
                 if (!Utilities.inUnit(x)) {
-                        System.out.println("Trying to set x to " + x);
                         throw new IllegalArgumentException();
                 } else {
                         this.x = x;
@@ -45,7 +44,6 @@ public class Force {
 
         public void setY(Double y) {
                 if (!Utilities.inUnit(y)) {
-                        System.out.println("Trying to set y to " + y);
                         throw new IllegalArgumentException();
                 } else {
                         this.y = y;
@@ -54,7 +52,6 @@ public class Force {
 
         public void setZ(Double z) {
                 if (!Utilities.inUnit(z)) {
-                        System.out.println("Trying to set z to " + z);
                         throw new IllegalArgumentException();
                 } else {
                         this.z = z;

@@ -8,3 +8,6 @@ application.linux64
 application.windows32
 application.windows64
 application.macosx
+javadocs
+javadocs/*
+create_javadocs.sh
