@@ -1,8 +1,28 @@
+/**
+ * @author jakemingolla
+ * @since 1.0
+ *
+ * Object that stores a Force vector in 3-Dimensonal Cartesian space.
+ * A Force is defined as an object with x, y, and z portions ranging
+ * from -1.0 to 1.0 that define a unit vector in the direction the
+ * Force is pointing. The magnitude is any Double precision value greater
+ * than 0. For clarity, a magnitude may not be represented as a negative
+ * number to imply reversing it.
+ */
 public class Force {
 
+        /* The Force's unit vector in the 3-Dimensonal Cartesian space. */
         private Double x, y, z;
+
+        /* The Force's magnitude. Must be positive. */
         private Double magnitude;
 
+        /**
+         * @author jakemingolla
+         *
+         * Default constructor for a Force. Sets all x, y, and z portions
+         * as well as the magnitude to zero.
+         */
         Force() {
                 this.x = 0.0;
                 this.y = 0.0;
