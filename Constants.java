@@ -13,8 +13,6 @@ public class Constants {
         public static final Double DEFAULT_BOUNDING_BOX_B = 255.0d;
         public static final Double DEFAULT_BOUNDING_BOX_A = 255.0d;
 
-        public static final Double DEFAULT_BOUNDING_BOX_FORCE = 1000.0d;
-
         public static final Double DEFAULT_ATOM_RADIUS = 10.0d;
 
         public static final Double DEFAULT_ATOM_R = 255.0d;
@@ -48,6 +46,6 @@ public class Constants {
 
         public static final Double DEFAULT_COULOMB_CONSTANT = 1000.0d;
 
-        public static final Double DEFAULT_BOUNDING_FORCE = 1000.0d;
+        public static final Double DEFAULT_BOUNDING_FORCE = 25.0d;
 
 }

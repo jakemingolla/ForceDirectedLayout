@@ -19,7 +19,7 @@ public class Utilities {
 
         public static Double getSign(Double a) {
                 if (inRange(a, 0.0)) {
-                        return 1.0d;
+                        return 0.0d;
                 } else if (a > EPSILON) {
                         return 1.0d;
                 } else {

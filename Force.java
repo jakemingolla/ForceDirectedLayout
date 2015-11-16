@@ -56,6 +56,7 @@ public class Force {
 
         public void setX(Double x) {
                 if (!Utilities.inUnit(x)) {
+                        System.out.println("Trying to set x to " + x);
                         throw new IllegalArgumentException();
                 } else {
                         this.x = x;

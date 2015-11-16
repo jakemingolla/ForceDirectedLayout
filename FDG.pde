@@ -29,8 +29,14 @@ void setup() {
 
         List<Applicator> applicatorList = new ArrayList<Applicator>();
 
-        CoulombForceApplicator cfa = new CoulombForceApplicator();
-        applicatorList.add(cfa);
+        //CoulombForceApplicator cfa = new CoulombForceApplicator();
+        //applicatorList.add(cfa);
+
+        Force gravitationalForce = new Force()
+                                        .withY(-1.0d)
+                                        .withMagnitude(1.0d);
+        GravitationalForceApplicator gfa = new GravitationalForceApplicator(gravitationalForce);
+        applicatorList.add(gfa);
 
         BoundingForceApplicator bfa = new BoundingForceApplicator(box);
         applicatorList.add(bfa);

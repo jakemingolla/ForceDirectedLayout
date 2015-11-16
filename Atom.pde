@@ -1,4 +1,4 @@
-public class Atom extends Node implements Renderable {
+public class Atom extends Node implements Renderable, Gravitational {
 
         private Double radius;
 

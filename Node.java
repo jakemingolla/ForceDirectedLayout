@@ -122,6 +122,7 @@ public abstract class Node implements Updateable {
                 Double xTotal = 0.0d;
                 Double yTotal = 0.0d;
                 Double zTotal = 0.0d;
+                
 
                 /* Sum up the magnitude and direction of all
                  * the Forces in the Force list. */
@@ -243,6 +244,80 @@ public abstract class Node implements Updateable {
                 Double yDiff = getYDiff(target);
                 Double zDiff = getZDiff(target);
                 return Math.sqrt((xDiff * xDiff) + (yDiff * yDiff) + (zDiff * zDiff));
+        }
+
+        /** 
+         * @author jakemingolla
+         *
+         * Returns whether or not the target Node intersects with (inclusively with the
+         * boundary) to the current Node in the x direction. May be overriden for irregular shapes.
+         *
+         * @param target        The target Node to test for intersection
+         */
+        public Boolean canIntersectX(Node target) {
+                Double targetX = target.getX();
+                Double targetW = target.getW();
+                Double targetRightEnd = targetX + (targetW);
+
+                Double leftEnd = x - (w / 2);
+                Double rightEnd = x + (w / 2);
+                Boolean intersect = (targetRightEnd > leftEnd && targetRightEnd < rightEnd);
+
+                return intersect;
+        }
+
+        /** 
+         * @author jakemingolla
+         *
+         * Returns whether or not the target Node intersects with (inclusively with the
+         * boundary) to the current Node in the y direction. May be overriden for irregular shapes.
+         *
+         * @param target        The target Node to test for intersection
+         */
+        public Boolean canIntersectY(Node target) {
+                Double targetY = target.getY();
+                Double targetH = target.getH();
+                Double targetRightEnd = targetY + (targetH);
+
+                Double leftEnd = y - (h / 2);
+                Double rightEnd = y + (h / 2);
+
+                Boolean intersect = (targetRightEnd > leftEnd && targetRightEnd < rightEnd);
+
+                return intersect;
+        }
+
+        /** 
+         * @author jakemingolla
+         *
+         * Returns whether or not the target Node intersects with (inclusively with the
+         * boundary) to the current Node in the z direction. May be overriden for irregular shapes.
+         *
+         * @param target        The target Node to test for intersection
+         */
+        public Boolean canIntersectZ(Node target) {
+                Double targetZ = target.getZ();
+                Double targetL = target.getL();
+                Double targetRightEnd = targetZ + (targetL);
+
+                Double leftEnd = z - (l / 2);
+                Double rightEnd = z + (l / 2);
+
+                Boolean intersect = (targetRightEnd > leftEnd  && targetRightEnd < rightEnd);
+
+                return intersect;
+        }
+
+        /**
+         * @author jakemingolla
+         *
+         * returns whether or not the target Node intersects with (inclusively with the
+         * boundary) to the current Node in all directions.
+         *
+         * @param target        The target Node to test for intersection
+         */
+        public Boolean canIntersect(Node target) {
+                return canIntersectX(target) && canIntersectY(target) && canIntersectZ(target);
         }
 
         /*
