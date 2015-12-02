@@ -11,7 +11,7 @@
  * @see Force
  * @see Renderable
  */
-public class Atom extends Node implements Renderable {
+public class Atom extends Node implements Renderable, Gravitational {
 
         /* Double precision radius of the atom. In relation
          * to the Node object, this corresponds to each of the

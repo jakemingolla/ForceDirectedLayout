@@ -46,7 +46,7 @@ void setup() {
         applicatorList.add(gfa);
 
         BoundingForceApplicator bfa = new BoundingForceApplicator(box);
-        //applicatorList.add(bfa);
+        applicatorList.add(bfa);
 
         forceDirectedGraph = new ForceDirectedGraph(nodes, edges,
                                                     applicatorList);
@@ -72,9 +72,13 @@ void draw() {
 void handleGravity() {
         Float totalPortion = sqrt((rotateUD * rotateUD) + (rotateLR * rotateLR));
         Double xPortion = new Double(rotateLR / totalPortion);
+
+        xPortion = 0.0d;
+
         //println("xportion = " + xPortion);
         Double yPortion = new Double(rotateUD / (2 * PI));
-        println("yportion = " + yPortion);
+        yPortion = 1.0d;
+        //println("yportion = " + yPortion);
         Double zPortion = 0.0d;
 
         Force f = new Force()

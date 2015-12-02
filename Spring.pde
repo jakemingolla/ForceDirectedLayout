@@ -44,11 +44,11 @@ public class Spring extends Edge implements Renderable {
                        /* Note the conversion between our Double values and the float values
                         * needed for processing. */
 
-                        /*
-                       line(vertex1.getX().floatValue(), vertex1.getY().floatValue(), vertex1.getZ().floatValue(),
-                            vertex2.getX().floatValue(), vertex2.getY().floatValue(), vertex2.getZ().floatValue());
-                       */
-                       println(vertex1.getClass());
+                        Atom v1 = (Atom)vertex1;
+                        Atom v2 = (Atom)vertex2;
+
+                       line(v1.getX().floatValue(), v1.getY().floatValue(), v1.getZ().floatValue(),
+                            v2.getX().floatValue(), v2.getY().floatValue(), v2.getZ().floatValue());
                popMatrix();
         }
 }
