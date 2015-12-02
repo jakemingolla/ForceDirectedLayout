@@ -2,17 +2,21 @@
  * @author jakemingolla
  * @since 1.0
  *
- * Lowest level a {@link Node} can take within a scene. An Atom is
- * a single Node characterized by a sphere rendered with RGBA texture.
+ * Point of atomicity within the Force Directed Graph scene.
+ * An Atom is the smallest {@link Node} object that is 
+ * still {@link Renderable} and can interact with {@link
+ * Force} objects.
  *
+ * @see Node
+ * @see Force
  * @see Renderable
- * @see Gravitational
  */
-public class Atom extends Node implements Renderable, Gravitational {
+public class Atom extends Node implements Renderable {
 
-        /* Radius of the atom, which overrides its width, height, and length
-         * for internal calculations while continuing to meet its Node
-         * interface. */
+        /* Double precision radius of the atom. In relation
+         * to the Node object, this corresponds to each of the
+         * x, y, and z fields.
+         */
         private Double radius;
 
         /**

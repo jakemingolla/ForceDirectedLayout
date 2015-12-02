@@ -10,19 +10,19 @@
  */
 public abstract class Edge<T> {
 
-        /*
-         * The vertex information of the parameterized type T.
-         */
+        /* The vertices within the Edge. For convention, an Edge
+         * can only contain two vertices. */
         protected T vertex1;
         protected T vertex2;
 
         /**
          * @author jakemingolla
          *
-         * Default constructor for an Edge given two vertices.
+         * Constructor of an Edge between two vertices of the parameterized
+         * type.
          *
-         * @param vertex1       The first vertex within the Edge.
-         * @param vertex2       The second vertex within the Edge.
+         * @param vertex1   The first vertex within an Edge.
+         * @param vertex2   The second vertex within an Edge.
          */
         Edge(T vertex1, T vertex2) {
                 this.vertex1 = vertex1;
@@ -31,13 +31,13 @@ public abstract class Edge<T> {
 
         /*
          *
-         * Getters and Setters Below.
-         *
+         *      GETTERS AND SETTERS BELOW
          *
          */
         public T getVertex1() {
                 return vertex1;
         }
+
         public T getVertex2() {
                 return vertex2;
         }

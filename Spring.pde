@@ -1,5 +1,6 @@
 /**
  * @author jakemingolla
+ * @since 1,0
  *
  * Scene-specific implementation of a Spring, which will join two
  * {@link Atom} objects inheriting the {@link Node} abstract class.
@@ -40,8 +41,10 @@ public class Spring<Atom> extends Edge implements Renderable {
                               Constants.DEFAULT_SPRING_B.floatValue(),
                               Constants.DEFAULT_SPRING_A.floatValue());
                        strokeWeight(Constants.DEFAULT_SPRING_STROKE_WEIGHT.floatValue()); 
-                       line(((Node)vertex1).getX().floatValue(), ((Node)vertex1).getY().floatValue(), ((Node)vertex1).getZ().floatValue(),
-                            ((Node)vertex2).getX().floatValue(), ((Node)vertex2).getY().floatValue(), ((Node)vertex2).getZ().floatValue());
+                       /* Note the conversion between our Double values and the float values
+                        * needed for processing. */
+                       line(vertex1.getX().floatValue(), vertex1.getY().floatValue(), vertex1.getZ().floatValue(),
+                            vertex2.getX().floatValue(), vertex2.getY().floatValue(), vertex2.getZ().floatValue());
                popMatrix();
         }
 }
