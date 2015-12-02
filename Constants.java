@@ -1,5 +1,6 @@
 public class Constants {
 
+        public static final Double DEFAULT_BOUNDING_BOX_WEIGHT = 0.0d;
         public static final Double DEFAULT_BOUNDING_BOX_X = 0.0d;
         public static final Double DEFAULT_BOUNDING_BOX_Y = 0.0d;
         public static final Double DEFAULT_BOUNDING_BOX_Z = 0.0d;
@@ -14,6 +15,7 @@ public class Constants {
         public static final Double DEFAULT_BOUNDING_BOX_A = 255.0d;
 
         public static final Double DEFAULT_ATOM_RADIUS = 10.0d;
+        public static final Double DEFAULT_ATOM_WEIGHT = 100.0d;
 
         public static final Double DEFAULT_ATOM_R = 255.0d;
         public static final Double DEFAULT_ATOM_G = 255.0d;
@@ -46,6 +48,8 @@ public class Constants {
 
         public static final Double DEFAULT_COULOMB_CONSTANT = 1000.0d;
 
-        public static final Double DEFAULT_BOUNDING_FORCE = 25.0d;
+        public static final Double DEFAULT_BOUNDING_FORCE = 250.0d;
+
+        public static final Double DEFAULT_GRAVITATIONAL_FORCE = 1.0d;
 
 }

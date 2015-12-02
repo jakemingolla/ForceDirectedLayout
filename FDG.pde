@@ -7,14 +7,21 @@ import java.util.ArrayList;
 
 BoundingBox box;
 ForceDirectedGraph forceDirectedGraph;
+GravitationalForceApplicator gfa;
 Double proxyMouseX;
 Double proxyMouseY;
+
+Float rotateLR;
+Float rotateUD;
 
 void setup() {
         size(800, 600, P3D);
 
         List<Node> nodes = new ArrayList<Node>();
         List<Edge> edges = new ArrayList<Edge>();
+
+        rotateUD = 0.0f;
+        rotateLR = 0.0f;
 
         Atom a = new Atom(100.0d, 100.0d, 100.0d);
         Atom b = new Atom(150.0d, 100.0d, 100.0d);
@@ -34,12 +41,12 @@ void setup() {
 
         Force gravitationalForce = new Force()
                                         .withY(-1.0d)
-                                        .withMagnitude(1.0d);
-        GravitationalForceApplicator gfa = new GravitationalForceApplicator(gravitationalForce);
+                                        .withMagnitude(200.0d);
+        gfa = new GravitationalForceApplicator(gravitationalForce);
         applicatorList.add(gfa);
 
         BoundingForceApplicator bfa = new BoundingForceApplicator(box);
-        applicatorList.add(bfa);
+        //applicatorList.add(bfa);
 
         forceDirectedGraph = new ForceDirectedGraph(nodes, edges,
                                                     applicatorList);
@@ -55,18 +62,41 @@ void draw() {
         setupCamera();
         handleCameraTranslations();
         handleCameraRotations();
+        handleGravity();
 
         handleAxes();
         forceDirectedGraph.update();
         forceDirectedGraph.render();
 }
 
+void handleGravity() {
+        Float totalPortion = sqrt((rotateUD * rotateUD) + (rotateLR * rotateLR));
+        Double xPortion = new Double(rotateLR / totalPortion);
+        //println("xportion = " + xPortion);
+        Double yPortion = new Double(rotateUD / (2 * PI));
+        println("yportion = " + yPortion);
+        Double zPortion = 0.0d;
+
+        Force f = new Force()
+                        .withX(xPortion)
+                        .withY(yPortion)
+                        .withZ(zPortion)
+                        .withMagnitude(Constants.DEFAULT_GRAVITATIONAL_FORCE);
+
+        gfa.setGravitationalForce(f);
+}
+
 void handleAxes() {
         pushStyle();
+                // x is red
                 stroke(255, 0, 0);
                 line(0, 0, 0, 150, 0, 0);
+
+                // Y is green
                 stroke(0, 255, 0);
                 line(0, 0, 0, 0, 150, 0);
+
+                // Z is blue
                 stroke(0, 0, 255);
                 line(0, 0, 0, 0, 0, 150);
         popStyle();
@@ -101,10 +131,15 @@ void handleCameraTranslations() {
 }
 
 void handleCameraRotations() {
-        rotateX(PI * Constants.DEFAULT_CAMERA_ROTATE_X_BASE_FACTOR.floatValue() +
-                -1 * proxyMouseY.floatValue() / float(width) * PI * Constants.DEFAULT_CAMERA_ROTATE_X_MOUSE_FACTOR.floatValue());
+        // Note change to X and Y
+        rotateLR = (PI * Constants.DEFAULT_CAMERA_ROTATE_X_BASE_FACTOR.floatValue() +
+                   -1 * proxyMouseX.floatValue() / float(width) * PI * Constants.DEFAULT_CAMERA_ROTATE_X_MOUSE_FACTOR.floatValue());
 
-        rotateY(PI * Constants.DEFAULT_CAMERA_ROTATE_Y_BASE_FACTOR.floatValue() +
-                -1 * proxyMouseX.floatValue() / float(height) * PI * Constants.DEFAULT_CAMERA_ROTATE_Y_MOUSE_FACTOR.floatValue());
+        rotateUD = (PI * Constants.DEFAULT_CAMERA_ROTATE_Y_BASE_FACTOR.floatValue() +
+                  -1 * proxyMouseY.floatValue() / float(height) * PI * Constants.DEFAULT_CAMERA_ROTATE_Y_MOUSE_FACTOR.floatValue());
+
+        rotateX(rotateUD);
+        rotateY(rotateLR);
+
 }
                            

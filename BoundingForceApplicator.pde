@@ -75,14 +75,14 @@ public class BoundingForceApplicator extends FirstOrderApplicator {
                         atom.addForce(f);
                 }
                 if (!canFitY) {
-                        Double yDiff = boundingBox.getXDiff(atom);
+                        Double yDiff = boundingBox.getYDiff(atom);
                         Force f = new Force()
                                         .withY(Utilities.getSign(yDiff) / unboundedDimensions)
                                         .withMagnitude(magnitude);
                         atom.addForce(f);
                 }
                 if (!canFitZ) {
-                        Double zDiff = boundingBox.getXDiff(atom);
+                        Double zDiff = boundingBox.getZDiff(atom);
                         Force f = new Force()
                                         .withZ(Utilities.getSign(zDiff) / unboundedDimensions)
                                         .withMagnitude(magnitude);

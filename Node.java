@@ -257,7 +257,7 @@ public abstract class Node implements Updateable {
         public Boolean canIntersectX(Node target) {
                 Double targetX = target.getX();
                 Double targetW = target.getW();
-                Double targetRightEnd = targetX + (targetW);
+                Double targetRightEnd = targetX - (targetW);
 
                 Double leftEnd = x - (w / 2);
                 Double rightEnd = x + (w / 2);
@@ -277,7 +277,7 @@ public abstract class Node implements Updateable {
         public Boolean canIntersectY(Node target) {
                 Double targetY = target.getY();
                 Double targetH = target.getH();
-                Double targetRightEnd = targetY + (targetH);
+                Double targetRightEnd = targetY - (targetH);
 
                 Double leftEnd = y - (h / 2);
                 Double rightEnd = y + (h / 2);
@@ -298,7 +298,7 @@ public abstract class Node implements Updateable {
         public Boolean canIntersectZ(Node target) {
                 Double targetZ = target.getZ();
                 Double targetL = target.getL();
-                Double targetRightEnd = targetZ + (targetL);
+                Double targetRightEnd = targetZ - (targetL);
 
                 Double leftEnd = z - (l / 2);
                 Double rightEnd = z + (l / 2);
