@@ -106,53 +106,55 @@ public abstract class Node implements Updateable {
          * @see Force
          * */
         public void update() {
-                Double magnitude = sqrt((vX * vX) + (vY * vY) + (vZ * vZ));
+                if (forces.size() > 0) {
+                        Double magnitude = sqrt((vX * vX) + (vY * vY) + (vZ * vZ));
 
-                if (magnitude > Utilities.EPSILON) {
-                        Force friction = new Force()
-                                                .withX((-1.0d * vX) / magnitude)
-                                                .withY((-1.0d * vY) / magnitude)
-                                                .withZ((-1.0d * vZ) / magnitude)
-                                                .withMagnitude(magnitude * Constants.DEFAULT_FRICTION_FACTOR);
-                        addForce(friction);
+                        if (magnitude > Utilities.EPSILON) {
+                                Force friction = new Force()
+                                                        .withX((-1.0d * vX) / magnitude)
+                                                        .withY((-1.0d * vY) / magnitude)
+                                                        .withZ((-1.0d * vZ) / magnitude)
+                                                        .withMagnitude(magnitude * Constants.DEFAULT_FRICTION_FACTOR);
+                                addForce(friction);
+                        }
+
+                        /* These hold the sum of each force's magnitude
+                         * in the given direction. */
+                        Double xTotal = 0.0d;
+                        Double yTotal = 0.0d;
+                        Double zTotal = 0.0d;
+                        
+
+                        /* Sum up the magnitude and direction of all
+                         * the Forces in the Force list. */
+                        for (Force f : forces) {
+                                magnitude = f.getMagnitude();
+                                xTotal += f.getX() * magnitude;
+                                yTotal += f.getY() * magnitude;
+                                zTotal += f.getZ() * magnitude;
+                        }
+
+                        /* The acceleration is proportional the weight
+                         * of the object (f = ma). */
+                        Double xAcceleration = (xTotal / weight);
+                        Double yAcceleration = (yTotal / weight);
+                        Double zAcceleration = (zTotal / weight);
+
+                        /* Finally, update the current velocity of the Node... */
+                        vX += xAcceleration;
+                        vY += yAcceleration;
+                        vZ += zAcceleration;
+
+                        /* ... which in turn updates the current Cartesian coordinates
+                         * for positoion. */
+                        x += vX;
+                        y += vY;
+                        z += vZ;
+
+                        /* We must clear the force list in order to prevent the forces
+                         * from being applied multiple times. */
+                        clearForces();
                 }
-
-                /* These hold the sum of each force's magnitude
-                 * in the given direction. */
-                Double xTotal = 0.0d;
-                Double yTotal = 0.0d;
-                Double zTotal = 0.0d;
-                
-
-                /* Sum up the magnitude and direction of all
-                 * the Forces in the Force list. */
-                for (Force f : forces) {
-                        magnitude = f.getMagnitude();
-                        xTotal += f.getX() * magnitude;
-                        yTotal += f.getY() * magnitude;
-                        zTotal += f.getZ() * magnitude;
-                }
-
-                /* The acceleration is proportional the weight
-                 * of the object (f = ma). */
-                Double xAcceleration = (xTotal / weight);
-                Double yAcceleration = (yTotal / weight);
-                Double zAcceleration = (zTotal / weight);
-
-                /* Finally, update the current velocity of the Node... */
-                vX += xAcceleration;
-                vY += yAcceleration;
-                vZ += zAcceleration;
-
-                /* ... which in turn updates the current Cartesian coordinates
-                 * for positoion. */
-                x += vX;
-                y += vY;
-                z += vZ;
-
-                /* We must clear the force list in order to prevent the forces
-                 * from being applied multiple times. */
-                clearForces();
         }
 
         /**

@@ -55,7 +55,6 @@ public class GravitationalForceApplicator extends FirstOrderApplicator {
                 super.apply(args);
 
                 Atom atom = (Atom)args[0];
-
                 atom.addForce(gravitationalForce);
         }
 }
