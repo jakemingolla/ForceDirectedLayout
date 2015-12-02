@@ -1,12 +1,14 @@
 /**
  * @author jakemingolla
- * @since 1.0
+ * @since 1,0
  *
- * Spring class within a Force Directed Graph scene. Implements an
- * {@link Edge} between two {@link Atom} objects.
+ * Scene-specific implementation of a Spring, which will join two
+ * {@link Atom} objects inheriting the {@link Node} abstract class.
  *
- * @see Edge
- * @see Atom
+ * Is the information needed for the implementation of Hooke's 
+ * law in a later version.
+ *
+ * @see Node
  * @see Renderable
  */
 public class Spring<Atom> extends Edge implements Renderable {
@@ -14,8 +16,11 @@ public class Spring<Atom> extends Edge implements Renderable {
         /**
          * @author jakemingolla
          *
-         * Constructor for a Spring object between two atoms.
+         * Default constructor for the spring class given two {@link Atom}
+         * instances.
          *
+         * @param vertex1       The first Atom within the Spring.
+         * @param vertex2       The second Atom within the Spring.
          */
         Spring(Atom vertex1, Atom vertex2) {
                 super(vertex1, vertex2);
@@ -24,13 +29,11 @@ public class Spring<Atom> extends Edge implements Renderable {
         /**
          * @author jakemingolla
          *
-         * Renders an instance of the Spring class. This is defined as a
-         * (straight) line between each of the {@link Atom} objects. The 
-         * colors can be controlled by the {@link Constants#DEFAULT_SPRING_R},
-         * {@link Constants#DEFAULT_SPRING_G}, {@link Constants#DEFAULT_SPRING_B},
-         * and {@link Constants#DEFAULT_SPRING_A}, and the stroke weight can be
-         * controlled by {@link Constants#DEFAULT_SPRING_STROKE_WEIGHT}.
+         * Overriden render function to render a Spring object. Rendering a Spring
+         * is defined as a straight line between each of the {@link Atom} objects
+         * as vertices and can be controlled using {@link Constants} fields.
          */
+        @Override
         public void render() {
                 pushMatrix();
                        stroke(Constants.DEFAULT_SPRING_R.floatValue(),

@@ -2,9 +2,11 @@
  * @author jakemingolla
  * @since 1.0
  *
- * Edge between two objects of the parameterized class T.
- * In a graph, this reprents an arbitrary connection between
- * a vertex.
+ * Abstract class to hold the information related to a Edge
+ * within the graph. An Edge is defined as any object that
+ * holds onto two instances of a typed parameter.
+ *
+ * As a convention, all Edges are un-directed.
  */
 public abstract class Edge<T> {
 

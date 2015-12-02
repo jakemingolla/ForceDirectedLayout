@@ -1,0 +1,2 @@
+move renderable and updateable out of graph and into force directed graph
+change weight to mass

@@ -85,6 +85,8 @@ public abstract class Applicator {
          * ***NOTE*** <b>MUST</b> be called as "super.apply(args)" when overriding in a Applicator
          * inheriting this method in order to guarantee accuracy of caller's arguments in relation
          * to number of arguments and proper class.
+         *
+         * As of 11/16/2015 supports interfaces as applied classes.
          */
         protected void apply(Object... args) {
                 assert(args.length == numArgs);
@@ -92,7 +94,10 @@ public abstract class Applicator {
                 int length = args.length;
                 for (int i = 0; i < length; i++) {
                         Class c = args[i].getClass();
-                        assert(c.equals(getAppliedClassByIndex(i)));
+                        Class applied = getAppliedClassByIndex(i);
+                        if(!(c.equals(applied) || applied.isInstance(args[i]))) {
+                                throw new IllegalArgumentException();
+                        }
                 }
         }
 }

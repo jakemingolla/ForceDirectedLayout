@@ -30,6 +30,16 @@ public class Force {
                 this.magnitude = 0.0;
         }
 
+        /**
+         * @author jakemingolla
+         *
+         * Overriden constructor for a Force given specific arguments.
+         *
+         * @param x             The x portion of the given Force.
+         * @param y             The y portion of the given Force.
+         * @param z             The z portion of the given Force.
+         * @param magnitude     The magnitude of the given Force.
+         */
         Force(Double x, Double y, Double z, Double magnitude) {
                 this.x = x;
                 this.y = y;
@@ -38,6 +48,13 @@ public class Force {
         }
 
 
+        /*
+         *
+         *
+         * Getters and Setters below.
+         *
+         *
+         */
         public Double getX() {
                 return x;
         }
@@ -56,6 +73,7 @@ public class Force {
 
         public void setX(Double x) {
                 if (!Utilities.inUnit(x)) {
+                        System.out.println("Trying to set x to " + x);
                         throw new IllegalArgumentException();
                 } else {
                         this.x = x;
@@ -91,6 +109,11 @@ public class Force {
                 this.magnitude = magnitude;
         }
 
+        /*
+         *
+         * Fluent Interface for constructing a Force object below.
+         *
+         */
         public Force withX(Double x) {
                 this.setX(x);
                 return this;
