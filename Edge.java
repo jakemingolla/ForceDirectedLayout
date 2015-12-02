@@ -8,12 +8,15 @@
  *
  * As a convention, all Edges are un-directed.
  */
-public abstract class Edge<T> {
+public abstract class Edge {
 
         /* The vertices within the Edge. For convention, an Edge
          * can only contain two vertices. */
-        protected T vertex1;
-        protected T vertex2;
+         protected Object vertex1;
+         protected Object vertex2;
+
+        /* The required class of the vertex. */
+         protected Class vertexClass;
 
         /**
          * @author jakemingolla
@@ -21,10 +24,16 @@ public abstract class Edge<T> {
          * Constructor of an Edge between two vertices of the parameterized
          * type.
          *
-         * @param vertex1   The first vertex within an Edge.
-         * @param vertex2   The second vertex within an Edge.
+         * @param vertex1       The first vertex within an Edge.
+         * @param vertex2       The second vertex within an Edge.
+         * @param vertexClass   The class the vertices are required to implement.
          */
-        Edge(T vertex1, T vertex2) {
+        Edge(Object vertex1, Object vertex2, Class vertexClass) {
+                this.vertexClass = vertexClass;
+                if (!(vertexClass.equals(vertex1.getClass())) ||
+                    !(vertexClass.equals(vertex2.getClass()))) {
+                        throw new IllegalArgumentException();
+                }
                 this.vertex1 = vertex1;
                 this.vertex2 = vertex2;
         }
@@ -34,18 +43,24 @@ public abstract class Edge<T> {
          *      GETTERS AND SETTERS BELOW
          *
          */
-        public T getVertex1() {
+        public Object getVertex1() {
                 return vertex1;
         }
 
-        public T getVertex2() {
+        public Object getVertex2() {
                 return vertex2;
         }
 
-        public void setVertex1(T vertex1) {
+        public void setVertex1(Object vertex1) {
+                if (!(vertexClass.equals(vertex1.getClass()))) {
+                        throw new IllegalArgumentException();
+                }
                 this.vertex1 = vertex1;
         }
-        public void setVertex2(T vertex2) {
+        public void setVertex2(Object vertex2) {
+                if (!(vertexClass.equals(vertex2.getClass()))) {
+                        throw new IllegalArgumentException();
+                }
                 this.vertex2 = vertex2;
         }
 }

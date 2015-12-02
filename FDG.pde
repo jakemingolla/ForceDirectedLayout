@@ -25,7 +25,7 @@ void setup() {
 
         Atom a = new Atom(100.0d, 100.0d, 100.0d);
         Atom b = new Atom(150.0d, 100.0d, 100.0d);
-        Spring<Atom> s = new Spring<Atom>(a, b);
+        Spring s = new Spring(a, b);
         box = new BoundingBox();
 
         nodes.add(box);

@@ -11,7 +11,7 @@
  * @see Node
  * @see Renderable
  */
-public class Spring<Atom> extends Edge implements Renderable {
+public class Spring extends Edge implements Renderable {
 
         /**
          * @author jakemingolla
@@ -23,7 +23,7 @@ public class Spring<Atom> extends Edge implements Renderable {
          * @param vertex2       The second Atom within the Spring.
          */
         Spring(Atom vertex1, Atom vertex2) {
-                super(vertex1, vertex2);
+                super(vertex1, vertex2, Atom.class);
         }
 
         /**
@@ -43,8 +43,12 @@ public class Spring<Atom> extends Edge implements Renderable {
                        strokeWeight(Constants.DEFAULT_SPRING_STROKE_WEIGHT.floatValue()); 
                        /* Note the conversion between our Double values and the float values
                         * needed for processing. */
+
+                        /*
                        line(vertex1.getX().floatValue(), vertex1.getY().floatValue(), vertex1.getZ().floatValue(),
                             vertex2.getX().floatValue(), vertex2.getY().floatValue(), vertex2.getZ().floatValue());
+                       */
+                       println(vertex1.getClass());
                popMatrix();
         }
 }
