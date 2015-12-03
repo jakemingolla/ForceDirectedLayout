@@ -13,6 +13,12 @@
  */
 public class Spring extends Edge implements Renderable {
 
+        /*
+         * Ideal length of the Spring for interaction with
+         * Hooke's Law.
+         */
+        private Double idealLength;
+
         /**
          * @author jakemingolla
          *
@@ -22,8 +28,9 @@ public class Spring extends Edge implements Renderable {
          * @param vertex1       The first Atom within the Spring.
          * @param vertex2       The second Atom within the Spring.
          */
-        Spring(Atom vertex1, Atom vertex2) {
+        Spring(Atom vertex1, Atom vertex2, Double idealLength) {
                 super(vertex1, vertex2, Atom.class);
+                this.idealLength = idealLength;
         }
 
         /**
@@ -60,5 +67,23 @@ public class Spring extends Edge implements Renderable {
          */
         @Override
         public void update() {
+        }
+
+        /*
+         *
+         *      GETTERS AND SETTERS BELOW
+         *
+         *
+         */
+
+        public Double getIdealLength() {
+                return idealLength;
+        }
+
+        public void setIdealLength(Double idealLength) {
+               if (!Utilities.isPositive(idealLength)) {
+                       throw new IllegalArgumentException();
+               }
+               this.idealLength = idealLength;
         }
 }

@@ -101,5 +101,9 @@ public class Utilities {
                 Double val = abs(a);
                 return (val < UNIT) || (inRange(val, UNIT));
         }
+
+        public static Boolean isPositive(Double a) {
+                return (inRange(a, EPSILON) || a > EPSILON);
+        }
                 
 }

@@ -47,8 +47,9 @@ public class Constants {
         public static final Double DEFAULT_WEIGHT_SENTINEL = -1.0d;
 
         public static final Double DEFAULT_COULOMB_CONSTANT = 175.0d;
+        public static final Double DEFAULT_HOOKE_CONSTANT = 1.0d;
 
-        public static final Double DEFAULT_BOUNDING_FORCE = 25.0d;
+        public static final Double DEFAULT_BOUNDING_FORCE = 20.0d;
 
         public static final Double DEFAULT_GRAVITATIONAL_FORCE = 9.8d;
 
