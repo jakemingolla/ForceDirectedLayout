@@ -39,6 +39,9 @@ void setup() {
         CoulombForceApplicator cfa = new CoulombForceApplicator();
         applicatorList.add(cfa);
 
+        HookeForceApplicator hfa = new HookeForceApplicator();
+        applicatorList.add(hfa);
+
         Force gravitationalForce = new Force()
                                         .withY(-1.0d)
                                         .withMagnitude(200.0d);
