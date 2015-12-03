@@ -34,6 +34,28 @@ public class ForceDirectedGraph<Atom, Spring> extends Graph {
                                         }
                                 }
                         }
+
+                        for (int i = 0; i < edgeListLength; i++) {
+                                Edge e = (Edge)edgeList.get(i);
+                                /* UNTESTED AS OF 12/2/15 */
+                                if (app instanceof SecondOrderApplicator) {
+                                        for (int j = i + 1; j < edgeListLength; j++) {
+                                                if (i != j) {
+                                                        Edge f = (Edge)edgeList.get(j);
+                                                        if (e.getClass().equals(app.getAppliedClassByIndex(0)) &&
+                                                            f.getClass().equals(app.getAppliedClassByIndex(1))) {
+                                                                app.apply(e, f);
+                                                        }
+                                                }
+                                        }
+                                }
+                                if (app instanceof FirstOrderApplicator) {
+                                        if (e.getClass().equals(app.getAppliedClassByIndex(0)) ||
+                                           (app.getAppliedClassByIndex(0).isInstance(e))) {
+                                                app.apply(e);
+                                        }
+                                }
+                        }
                 }
                 super.update();
         }

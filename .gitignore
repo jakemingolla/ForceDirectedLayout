@@ -11,3 +11,5 @@ application.macosx
 javadocs
 javadocs/*
 create_javadocs.sh
+data/*
+data

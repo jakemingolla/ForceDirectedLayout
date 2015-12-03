@@ -8,6 +8,7 @@ import java.util.ArrayList;
 BoundingBox box;
 ForceDirectedGraph forceDirectedGraph;
 GravitationalForceApplicator gfa;
+Parser parser;
 Double proxyMouseX;
 Double proxyMouseY;
 
@@ -16,23 +17,16 @@ Float rotateUD;
 
 void setup() {
         size(800, 600, P3D);
+        parser = new Parser();
 
-        List<Node> nodes = new ArrayList<Node>();
+        List<Node> nodes = parser.getAtoms("/home/jake/Documents/FDG/data/triangle.csv");
         List<Edge> edges = new ArrayList<Edge>();
 
         rotateUD = 0.0f;
         rotateLR = 0.0f;
 
-        Atom a = new Atom(100.0d, 100.0d, 100.0d);
-        Atom b = new Atom(150.0d, 100.0d, 100.0d);
-        Spring s = new Spring(a, b);
         box = new BoundingBox();
-
         nodes.add(box);
-        nodes.add(a);
-        nodes.add(b);
-
-        edges.add(s);
 
         List<Applicator> applicatorList = new ArrayList<Applicator>();
 

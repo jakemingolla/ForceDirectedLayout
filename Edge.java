@@ -54,6 +54,10 @@ public abstract class Edge implements Updateable {
                 return vertex2;
         }
 
+        public Class getVertexClass() {
+                return vertexClass;
+        }
+
         public void setVertex1(Object vertex1) {
                 if (!(vertexClass.equals(vertex1.getClass()))) {
                         throw new IllegalArgumentException();
