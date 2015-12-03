@@ -145,6 +145,11 @@ public abstract class Node implements Updateable {
                         vY += yAcceleration;
                         vZ += zAcceleration;
 
+                        System.out.println("x velocity = " + vX);
+                        System.out.println("y velocity = " + vY);
+                        System.out.println("z velocity = " + vZ);
+                        System.out.println("-----------------");
+
                         /* ... which in turn updates the current Cartesian coordinates
                          * for positoion. */
                         x += vX;
@@ -259,11 +264,12 @@ public abstract class Node implements Updateable {
         public Boolean canIntersectX(Node target) {
                 Double targetX = target.getX();
                 Double targetW = target.getW();
-                Double targetRightEnd = targetX - (targetW);
+                Double targetRightEnd = targetX - (targetW / 2);
 
                 Double leftEnd = x - (w / 2);
                 Double rightEnd = x + (w / 2);
-                Boolean intersect = (targetRightEnd > leftEnd && targetRightEnd < rightEnd);
+                Boolean intersect = ((targetRightEnd > leftEnd && targetRightEnd < rightEnd) ||
+                                     (Utilities.inRange(targetRightEnd, rightEnd) || Utilities.inRange(targetRightEnd, leftEnd)));
 
                 return intersect;
         }
@@ -279,12 +285,13 @@ public abstract class Node implements Updateable {
         public Boolean canIntersectY(Node target) {
                 Double targetY = target.getY();
                 Double targetH = target.getH();
-                Double targetRightEnd = targetY - (targetH);
+                Double targetRightEnd = targetY - (targetH / 2);
 
                 Double leftEnd = y - (h / 2);
                 Double rightEnd = y + (h / 2);
 
-                Boolean intersect = (targetRightEnd > leftEnd && targetRightEnd < rightEnd);
+                Boolean intersect = ((targetRightEnd > leftEnd && targetRightEnd < rightEnd) ||
+                                     (Utilities.inRange(targetRightEnd, rightEnd) || Utilities.inRange(targetRightEnd, leftEnd)));
 
                 return intersect;
         }
@@ -300,12 +307,13 @@ public abstract class Node implements Updateable {
         public Boolean canIntersectZ(Node target) {
                 Double targetZ = target.getZ();
                 Double targetL = target.getL();
-                Double targetRightEnd = targetZ - (targetL);
+                Double targetRightEnd = targetZ - (targetL / 2);
 
                 Double leftEnd = z - (l / 2);
                 Double rightEnd = z + (l / 2);
 
-                Boolean intersect = (targetRightEnd > leftEnd  && targetRightEnd < rightEnd);
+                Boolean intersect = ((targetRightEnd > leftEnd && targetRightEnd < rightEnd) ||
+                                     (Utilities.inRange(targetRightEnd, rightEnd) || Utilities.inRange(targetRightEnd, leftEnd)));
 
                 return intersect;
         }

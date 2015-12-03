@@ -36,8 +36,8 @@ void setup() {
 
         List<Applicator> applicatorList = new ArrayList<Applicator>();
 
-        //CoulombForceApplicator cfa = new CoulombForceApplicator();
-        //applicatorList.add(cfa);
+        CoulombForceApplicator cfa = new CoulombForceApplicator();
+        applicatorList.add(cfa);
 
         Force gravitationalForce = new Force()
                                         .withY(-1.0d)
@@ -51,8 +51,8 @@ void setup() {
         forceDirectedGraph = new ForceDirectedGraph(nodes, edges,
                                                     applicatorList);
 
-        proxyMouseX = (double)(float(mouseX));
-        proxyMouseY = (double)(float(mouseY));
+        proxyMouseX = (double)(width / 2);
+        proxyMouseY = (double)(height / 2);
 }
 
 void draw() {
@@ -70,16 +70,9 @@ void draw() {
 }
 
 void handleGravity() {
-        Float totalPortion = sqrt((rotateUD * rotateUD) + (rotateLR * rotateLR));
-        Double xPortion = new Double(rotateLR / totalPortion);
-
-        xPortion = 0.0d;
-
-        //println("xportion = " + xPortion);
-        Double yPortion = new Double(rotateUD / (2 * PI));
-        yPortion = 1.0d;
-        //println("yportion = " + yPortion);
-        Double zPortion = 0.0d;
+        Double xPortion = new Double(sin(rotateUD) * sin(rotateLR));
+        Double yPortion = new Double(cos(rotateUD));
+        Double zPortion = new Double(-1 * sin(rotateUD) * cos(rotateLR));
 
         Force f = new Force()
                         .withX(xPortion)
@@ -103,6 +96,19 @@ void handleAxes() {
                 // Z is blue
                 stroke(0, 0, 255);
                 line(0, 0, 0, 0, 0, 150);
+
+                // white is up
+                stroke(255, 255, 255);
+                Double gravityX = new Double(sin(rotateUD) * sin(rotateLR));
+                Double gravityY = new Double(cos(rotateUD));
+                Double gravityZ = new Double(-1 * sin(rotateUD) * cos(rotateLR));
+                Double gravityMagnitude = 100.0d;
+                line(0, 0, 0,
+                     gravityX.floatValue() * gravityMagnitude.floatValue(),
+                     gravityY.floatValue() * gravityMagnitude.floatValue(),
+                     gravityZ.floatValue() * gravityMagnitude.floatValue());
+
+
         popStyle();
 }
 
@@ -135,12 +141,8 @@ void handleCameraTranslations() {
 }
 
 void handleCameraRotations() {
-        // Note change to X and Y
-        rotateLR = (PI * Constants.DEFAULT_CAMERA_ROTATE_X_BASE_FACTOR.floatValue() +
-                   -1 * proxyMouseX.floatValue() / float(width) * PI * Constants.DEFAULT_CAMERA_ROTATE_X_MOUSE_FACTOR.floatValue());
-
-        rotateUD = (PI * Constants.DEFAULT_CAMERA_ROTATE_Y_BASE_FACTOR.floatValue() +
-                  -1 * proxyMouseY.floatValue() / float(height) * PI * Constants.DEFAULT_CAMERA_ROTATE_Y_MOUSE_FACTOR.floatValue());
+        rotateLR = -1 * (proxyMouseX.floatValue() / float(width) * TWO_PI);
+        rotateUD = -1 * (proxyMouseY.floatValue() / float(height) * TWO_PI);
 
         rotateX(rotateUD);
         rotateY(rotateLR);
