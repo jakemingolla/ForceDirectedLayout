@@ -52,16 +52,6 @@ public class BoundingForceApplicator extends FirstOrderApplicator {
                 Boolean canFitY = boundingBox.canIntersectY(atom);
                 Boolean canFitZ = boundingBox.canIntersectZ(atom);
 
-                /* Number of unbounded dimensions of the current Atom in relation to
-                 * the BoundingBox.
-                 *
-                 * Is stored as a Double for simplicity with division later to avoid casting,
-                 * and doesn't provide a noticeable uncertainity. */
-                Double unboundedDimensions = 0.0d;
-                unboundedDimensions += (!canFitX ? 1.0d: 0.0d);
-                unboundedDimensions += (!canFitY ? 1.0d: 0.0d);
-                unboundedDimensions += (!canFitZ ? 1.0d: 0.0d);
-
                 Double magnitude = Constants.DEFAULT_BOUNDING_FORCE;
 
                 /* For each of the Cartesian directions we are checking for fit, add the
@@ -70,21 +60,21 @@ public class BoundingForceApplicator extends FirstOrderApplicator {
                 if (!canFitX) {
                         Double xDiff = boundingBox.getXDiff(atom);
                         Force f = new Force()
-                                        .withX(Utilities.getSign(xDiff) / unboundedDimensions)
+                                        .withX(Utilities.getSign(xDiff))
                                         .withMagnitude(magnitude);
                         atom.addForce(f);
                 }
                 if (!canFitY) {
                         Double yDiff = boundingBox.getYDiff(atom);
                         Force f = new Force()
-                                        .withY(Utilities.getSign(yDiff) / unboundedDimensions)
+                                        .withY(Utilities.getSign(yDiff))
                                         .withMagnitude(magnitude);
                         atom.addForce(f);
                 }
                 if (!canFitZ) {
                         Double zDiff = boundingBox.getZDiff(atom);
                         Force f = new Force()
-                                        .withZ(Utilities.getSign(zDiff) / unboundedDimensions)
+                                        .withZ(Utilities.getSign(zDiff))
                                         .withMagnitude(magnitude);
                         atom.addForce(f);
                 }

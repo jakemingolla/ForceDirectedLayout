@@ -42,14 +42,14 @@ public class Constants {
         public static final Double DEFAULT_CAMERA_ROTATE_Y_MOUSE_FACTOR = 2.0d;
         public static final char DEFAULT_CAMERA_ROTATE_KEY = ' ';
 
-        public static final Double DEFAULT_FRICTION_FACTOR = 100.0d;
+        public static final Double DEFAULT_FRICTION_FACTOR = 8.0d;
 
         public static final Double DEFAULT_WEIGHT_SENTINEL = -1.0d;
 
-        public static final Double DEFAULT_COULOMB_CONSTANT = 1000.0d;
+        public static final Double DEFAULT_COULOMB_CONSTANT = 175.0d;
 
-        public static final Double DEFAULT_BOUNDING_FORCE = 200.0d;
+        public static final Double DEFAULT_BOUNDING_FORCE = 25.0d;
 
-        public static final Double DEFAULT_GRAVITATIONAL_FORCE = 200.0d;
+        public static final Double DEFAULT_GRAVITATIONAL_FORCE = 9.8d;
 
 }

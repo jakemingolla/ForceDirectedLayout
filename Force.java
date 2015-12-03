@@ -103,7 +103,6 @@ public class Force {
                                 .withMagnitude(magnitude);
         }
 
-
         public void setMagnitude(Double magnitude) {
                 this.magnitude = magnitude;
         }
