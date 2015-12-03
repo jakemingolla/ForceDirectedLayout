@@ -25,13 +25,16 @@ public class Atom extends Node implements Renderable, Gravitational {
          * Default constructor for an instance of an Atom object. Defaults
          * can be controlled by the {@link Constants} fields.
          *
+         * @param id            The id of the Atom.
+         * @param weight        The weight of the Atom.
          * @param x             The x position of the Atom.
          * @param y             The y position of the Atom.
          * @param z             The z position of the Atom.
-         * @param weight        The weight of the Atom.
          */
-        Atom(Double x, Double y, Double z, Double weight) {
-                super(weight,
+        Atom(String id, Double weight,
+             Double x, Double y, Double z) {
+                super(id,
+                      weight,
                       x,
                       y,
                       z,

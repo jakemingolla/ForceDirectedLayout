@@ -14,13 +14,27 @@ Double proxyMouseY;
 
 Float rotateLR;
 Float rotateUD;
+String path = "/home/jake/Documents/FDG/data/triangle.csv";
 
 void setup() {
         size(800, 600, P3D);
         parser = new Parser();
 
-        List<Node> nodes = parser.getAtoms("/home/jake/Documents/FDG/data/triangle.csv");
-        List<Edge> edges = new ArrayList<Edge>();
+        List<Node> nodes = null;
+        try {
+                nodes = parser.getAtoms(path);
+        } catch (Parser.DuplicateIdentifierException ex) {
+                println("ERROR: Duplicate identifier exception on identifier = " + ex.getMessage());
+                println("FDG will most likely run into a fatal error.");
+        }
+
+        List<Edge> edges = null;
+        try {
+                edges = parser.getSprings(path);
+        } catch (Parser.IllegalEdgeException ex) {
+                println("ERROR: Illegal Edge Exception thrown -- " + ex.getMessage());
+                println("FDG will most likely run into a fatal error.");
+        }
 
         rotateUD = 0.0f;
         rotateLR = 0.0f;

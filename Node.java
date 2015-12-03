@@ -13,6 +13,7 @@ import static java.lang.Math.sqrt;
  *      - Has a three dimensonal shape (w, l, h)
  *      - Has a color in RGB space (r, g, b, a)
  *      - A weight
+ *      - An identifier
  *      - A list of forces acting on the object.
  *
  * @see Force
@@ -43,6 +44,10 @@ public abstract class Node implements Updateable {
         /* Weight for interacting with other objects in the space. */
         protected Double weight;
 
+        /* Identifier for the given Node. For interaction with the user
+         * in the scene. */
+        protected String id;
+
         /* List of forces acting on the object. */
         List<Force> forces;
 
@@ -52,6 +57,7 @@ public abstract class Node implements Updateable {
          * Default constructor for creating an instance of the Node object with
          * the given parameters.
          *
+         * @param id            The identifier of the Node in the space.
          * @param weight        The weight of the Node in the space.
          * @param x             The x position of the Node.
          * @param y             The y position of the Node.
@@ -64,10 +70,11 @@ public abstract class Node implements Updateable {
          * @param b             The blue value of the Node's color.
          * @param a             The alpha value of the Node's color.
          */
-        Node(Double weight,
+        Node(String id, Double weight,
              Double x, Double y, Double z,
              Double w, Double h, Double l,
              Double r, Double g, Double b, Double a) {
+                this.id = id;
                 this.weight = weight;
 
                 this.x = x;
@@ -331,6 +338,9 @@ public abstract class Node implements Updateable {
          *
          */
 
+        public void setId(String id) {
+                this.id = id;
+        }
         public void setWeight(Double weight) {
                 this.weight = weight;
         }
@@ -374,6 +384,10 @@ public abstract class Node implements Updateable {
                 this.vZ = vZ;
         }
 
+
+        public String getId() {
+                return id;
+        }
         public Double getWeight() {
                 return weight;
         }

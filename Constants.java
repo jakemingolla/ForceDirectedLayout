@@ -1,5 +1,6 @@
 public class Constants {
 
+        public static final String DEFAULT_BOUNDING_BOX_ID = "____BOUNDING_BOX____";
         public static final Double DEFAULT_BOUNDING_BOX_WEIGHT = 0.0d;
         public static final Double DEFAULT_BOUNDING_BOX_X = 0.0d;
         public static final Double DEFAULT_BOUNDING_BOX_Y = 0.0d;
