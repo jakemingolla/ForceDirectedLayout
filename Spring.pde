@@ -51,4 +51,14 @@ public class Spring extends Edge implements Renderable {
                             v2.getX().floatValue(), v2.getY().floatValue(), v2.getZ().floatValue());
                popMatrix();
         }
+
+        /**
+         * @author jakemingolla
+         *
+         * Overriden update function. As of version 1,0, this does nothing as Springs
+         * never need to be updated.
+         */
+        @Override
+        public void update() {
+        }
 }

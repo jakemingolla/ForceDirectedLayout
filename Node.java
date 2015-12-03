@@ -145,11 +145,6 @@ public abstract class Node implements Updateable {
                         vY += yAcceleration;
                         vZ += zAcceleration;
 
-                        System.out.println("x velocity = " + vX);
-                        System.out.println("y velocity = " + vY);
-                        System.out.println("z velocity = " + vZ);
-                        System.out.println("-----------------");
-
                         /* ... which in turn updates the current Cartesian coordinates
                          * for positoion. */
                         x += vX;

@@ -7,8 +7,11 @@
  * holds onto two instances of a typed parameter.
  *
  * As a convention, all Edges are un-directed.
+ *
+ * *** NOTE ***
+ * As of 1.1, Edges must meet the {@link Updateable} interface.
  */
-public abstract class Edge {
+public abstract class Edge implements Updateable {
 
         /* The vertices within the Edge. For convention, an Edge
          * can only contain two vertices. */

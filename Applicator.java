@@ -25,6 +25,9 @@ public abstract class Applicator {
          *
          * Creates an instance of the Applicator object with the given
          * number of arguments and classes. 
+         * 
+         * In order to be a valid applicator, each class in the class
+         * list must meet the {@link Updateable} interface.
          *
          * *** NOTE *** the number of arguments must be exactly equal
          * to the length of the variable argument array the classes
@@ -35,7 +38,14 @@ public abstract class Applicator {
          *                      be given.
          */
         Applicator(Integer numArgs, Class... classes) {
-                assert(classes.length == numArgs);
+                if (classes.length != numArgs) {
+                        throw new IllegalArgumentException();
+                }
+                for (Class c : classes) {
+                        if (!(Updateable.class.isAssignableFrom(c))) {
+                                throw new IllegalArgumentException();
+                        }
+                }
                 this.numArgs = numArgs;
                 this.classes = classes;
         }
