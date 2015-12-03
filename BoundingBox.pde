@@ -19,7 +19,8 @@ public class BoundingBox extends Node implements Renderable {
          * all of its {@link Node} constructor information.
          */
         BoundingBox() {
-                super(Constants.DEFAULT_BOUNDING_BOX_WEIGHT,
+                super(Constants.DEFAULT_BOUNDING_BOX_ID,
+                      Constants.DEFAULT_BOUNDING_BOX_WEIGHT,
                       Constants.DEFAULT_BOUNDING_BOX_X,
                       Constants.DEFAULT_BOUNDING_BOX_Y,
                       Constants.DEFAULT_BOUNDING_BOX_Z,
