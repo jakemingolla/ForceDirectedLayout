@@ -14,7 +14,7 @@ Double proxyMouseY;
 
 Float rotateLR;
 Float rotateUD;
-String path = "/home/jake/Documents/FDG/data/triangle.csv";
+String path = "/home/jake/Documents/FDG/data/data1.csv";
 
 void setup() {
         size(800, 600, P3D);
@@ -54,7 +54,8 @@ void setup() {
                                         .withY(-1.0d)
                                         .withMagnitude(200.0d);
         gfa = new GravitationalForceApplicator(gravitationalForce);
-        applicatorList.add(gfa);
+        // Removing gravity for gif as of 12/5/15
+        //applicatorList.add(gfa);
 
         BoundingForceApplicator bfa = new BoundingForceApplicator(box);
         applicatorList.add(bfa);
@@ -75,7 +76,8 @@ void draw() {
         handleCameraRotations();
         handleGravity();
 
-        handleAxes();
+        // Removing axes drawing as of 12/5/15
+        //handleAxes();
         forceDirectedGraph.update();
         forceDirectedGraph.render();
 }
