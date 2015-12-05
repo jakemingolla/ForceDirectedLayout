@@ -1,3 +1,3 @@
 # ForceDirectedLayout
 
-![alt tag](https://raw.github.com/jakemingolla/ForceDirectedLayout/master/public/version1.2.gif)
+![alt tag](https://raw.github.com/jakemingolla/ForceDirectedLayout/master/public/release-v1.2.gif)
